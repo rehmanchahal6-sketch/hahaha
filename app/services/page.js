@@ -3,107 +3,78 @@
 import { useMemo, useState } from 'react';
 import { ArrowRight, Check, Search } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
+import Reveal from '@/components/Reveal';
 
 const servicesData = [
   {
-    category: 'Email Marketing',
-    title: 'Email Marketing Campaigns',
-    desc: 'Broadcast strategy, copy, templates, and reporting that keep your list productive.',
+    category: 'Setup',
+    title: 'Email & SMS framework setup',
+    desc: 'Workflows that nurture leads, recover carts, and reward loyal shoppers with segmented, personalized messaging.',
     deliverables: [
-      'Responsive branded templates',
-      'Campaign copy and subject testing',
-      'List segmentation',
-      'Performance reporting',
+      'Core lifecycle flows',
+      'Email + SMS channel setup',
+      'Segmentation foundations',
+      'Template system',
     ],
-    techStack: 'Klaviyo, Mailchimp, ActiveCampaign, HubSpot',
   },
   {
-    category: 'Email Marketing',
-    title: 'Email Automation',
-    desc: 'Triggered flows that nurture leads and retain customers without daily manual sends.',
+    category: 'Campaigns',
+    title: 'Strategic campaigns',
+    desc: 'Data-backed promotions for launches, holidays, and always-on revenue pushes.',
     deliverables: [
-      'Welcome series',
-      'Re-engagement sequences',
-      'Behavioral triggers',
-      'Tagging and scoring',
+      'Campaign calendar',
+      'Audience targeting',
+      'Offer & creative strategy',
+      'Launch QA',
     ],
-    techStack: 'Klaviyo, ActiveCampaign, Make, Zapier',
   },
   {
-    category: 'Email Marketing',
-    title: 'Lead Nurturing',
-    desc: 'Multi-step drips that educate prospects and move them toward a decision.',
+    category: 'Optimization',
+    title: 'Continuous A/B testing',
+    desc: 'Systematic experiments on subject lines, layouts, and offers that compound performance.',
     deliverables: [
-      'Funnel architecture',
-      'Educational sequences',
-      'Lead qualification paths',
-      'Conversion tracking',
+      'Test roadmap',
+      'Creative variants',
+      'Statistical readouts',
+      'Winner rollouts',
     ],
-    techStack: 'HubSpot CRM, ActiveCampaign, ConvertKit',
   },
   {
-    category: 'IT & Infrastructure',
-    title: 'CRM & Email Platform Setup',
-    desc: 'Clean migrations, DNS authentication, and platform configuration done properly.',
+    category: 'Optimization',
+    title: 'Dedicated optimization',
+    desc: 'Ongoing tuning of timing, copy, and channel mix based on live performance.',
     deliverables: [
-      'SPF, DKIM, DMARC',
-      'List hygiene and imports',
-      'CRM field and pipeline setup',
-      'Team roles and access',
+      'Weekly performance review',
+      'Flow upgrades',
+      'Send-time refinement',
+      'Cross-channel scaling',
     ],
-    techStack: 'DNS, Cloudflare, CRM APIs',
   },
   {
-    category: 'Web Solutions',
-    title: 'Website Development',
-    desc: 'Fast, clear sites and landing pages built to represent the brand and capture leads.',
+    category: 'Strategy',
+    title: 'Reporting & consultation',
+    desc: 'Clear attribution and consultative guidance so you always know what to do next.',
     deliverables: [
-      'Responsive UI',
-      'Speed and SEO basics',
-      'Lead capture integrations',
-      'CMS or custom stack',
+      'Revenue reporting',
+      'Insight sessions',
+      'Priority roadmap',
+      'Growth recommendations',
     ],
-    techStack: 'React, Next.js, WordPress, Shopify',
   },
   {
-    category: 'Web Solutions',
-    title: 'Website Maintenance',
-    desc: 'Updates, backups, monitoring, and content edits so the site stays healthy.',
+    category: 'Setup',
+    title: 'Deliverability & list health',
+    desc: 'Inbox placement, authentication, and list hygiene so your best work actually gets seen.',
     deliverables: [
-      'Uptime monitoring',
-      'Security patches',
-      'Backups',
-      'Content updates',
+      'SPF / DKIM / DMARC',
+      'List cleaning',
+      'Complaint monitoring',
+      'Sender reputation care',
     ],
-    techStack: 'SSL, CDN, Git',
-  },
-  {
-    category: 'Automation',
-    title: 'Business Automation',
-    desc: 'API and workflow connections that cut double entry across sales and ops tools.',
-    deliverables: [
-      'CRM ↔ email sync',
-      'Webhook integrations',
-      'Sales alerts',
-      'Internal report triggers',
-    ],
-    techStack: 'Zapier, Make, REST APIs',
-  },
-  {
-    category: 'IT & Infrastructure',
-    title: 'IT Consulting & Support',
-    desc: 'Practical guidance on email security, cloud tools, and day-to-day technical support.',
-    deliverables: [
-      'Stack audit and roadmap',
-      'Business email migration',
-      'Security guidance',
-      'Helpdesk support',
-    ],
-    techStack: 'Google Workspace, Microsoft 365, AWS, DNS',
   },
 ];
 
-const categories = ['All', 'Email Marketing', 'Web Solutions', 'Automation', 'IT & Infrastructure'];
+const categories = ['All', 'Setup', 'Campaigns', 'Optimization', 'Strategy'];
 
 export default function ServicesPage() {
   const { openQuote } = useQuote();
@@ -118,8 +89,7 @@ export default function ServicesPage() {
         const searchOk =
           !q ||
           s.title.toLowerCase().includes(q) ||
-          s.desc.toLowerCase().includes(q) ||
-          s.techStack.toLowerCase().includes(q);
+          s.desc.toLowerCase().includes(q);
         return catOk && searchOk;
       }),
     [filter, searchTerm]
@@ -130,9 +100,9 @@ export default function ServicesPage() {
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">Services</span>
-          <h1>Work that keeps systems and revenue connected.</h1>
+          <h1>Retention systems that scale with you.</h1>
           <p>
-            Browse IT, email, automation, and web services built for small and mid-size teams.
+            Full-funnel email & SMS—from framework setup to testing, optimization, and reporting.
           </p>
         </div>
       </section>
@@ -165,19 +135,19 @@ export default function ServicesPage() {
             <input
               className="form-input"
               style={{ paddingLeft: '2.4rem' }}
-              placeholder="Search services or tools…"
+              placeholder="Search services…"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
           <div className="services-grid">
-            {filtered.map((item) => (
-              <article key={item.title} className="panel-interactive">
+            {filtered.map((item, idx) => (
+              <Reveal key={item.title} as="article" className="panel-interactive" delay={(idx % 4) * 70}>
                 <span className="tag">{item.category}</span>
                 <h3 style={{ margin: '0.6rem 0 0.5rem' }}>{item.title}</h3>
                 <p style={{ marginBottom: '1rem' }}>{item.desc}</p>
-                <div style={{ display: 'grid', gap: '0.45rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'grid', gap: '0.45rem', marginBottom: '1.1rem' }}>
                   {item.deliverables.map((d) => (
                     <div className="check-row" key={d}>
                       <Check size={15} />
@@ -185,20 +155,13 @@ export default function ServicesPage() {
                     </div>
                   ))}
                 </div>
-                <p style={{ fontSize: '0.85rem', marginBottom: '1.1rem', color: 'var(--dim)' }}>
-                  Tools: {item.techStack}
-                </p>
-                <button className="btn btn-primary btn-full" onClick={() => openQuote(item.title)}>
-                  Request quote
+                <button className="btn btn-primary btn-full btn-arrow" onClick={() => openQuote(item.title)}>
+                  Book a call
                   <ArrowRight size={15} />
                 </button>
-              </article>
+              </Reveal>
             ))}
           </div>
-
-          {filtered.length === 0 && (
-            <p style={{ textAlign: 'center', padding: '3rem 0' }}>No matching services. Try another filter.</p>
-          )}
         </div>
       </section>
     </>

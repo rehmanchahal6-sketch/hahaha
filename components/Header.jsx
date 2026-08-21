@@ -9,7 +9,7 @@ import { useQuote } from '@/components/QuoteProvider';
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
+  { href: '/about', label: 'Experts' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
@@ -33,7 +33,7 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className={`navbar ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
+    <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="nav-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
           Paudel<span>on</span>
@@ -55,8 +55,8 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <button className="btn btn-primary btn-sm btn-arrow" onClick={() => openQuote()}>
-            Get Started
+          <button className="btn btn-primary btn-sm btn-arrow" onClick={() => openQuote('Book a Call')}>
+            Book a call
             <ArrowRight size={14} />
           </button>
           <button
@@ -87,10 +87,10 @@ export default function Header() {
             style={{ marginTop: '0.75rem' }}
             onClick={() => {
               setOpen(false);
-              openQuote();
+              openQuote('Book a Call');
             }}
           >
-            Get Started
+            Book a call
             <ArrowRight size={16} />
           </button>
         </div>

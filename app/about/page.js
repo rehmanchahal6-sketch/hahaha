@@ -2,23 +2,24 @@
 
 import { ArrowRight } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
+import Reveal from '@/components/Reveal';
+import MagneticButton from '@/components/MagneticButton';
 
-const pillars = [
+const experts = [
   {
-    title: 'Practical excellence',
-    desc: 'Clean setups, authenticated email, and infrastructure that holds up under real use.',
+    initials: 'ST',
+    title: 'Strategy leads',
+    desc: 'Lifecycle maps, offer architecture, and retention KPIs tied to real revenue—not vanity metrics.',
   },
   {
-    title: 'Scope transparency',
-    desc: 'Proposals spell out deliverables, timelines, and cost before work starts.',
+    initials: 'CR',
+    title: 'Creative & production',
+    desc: 'On-brand emails and SMS that pass daily QA and stay consistent across every campaign.',
   },
   {
-    title: 'Conversion focus',
-    desc: 'Email and web work measured by qualified leads and retained customers—not vanity metrics.',
-  },
-  {
-    title: 'Long-term support',
-    desc: 'We stay after launch to monitor, maintain, and improve what we built.',
+    initials: 'OP',
+    title: 'Optimization desk',
+    desc: 'Always-on testing and iteration so winning ideas get scaled across your whole program.',
   },
 ];
 
@@ -29,39 +30,27 @@ export default function AboutPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow">About</span>
-          <h1>Operators for growing businesses.</h1>
+          <span className="eyebrow">Experts</span>
+          <h1>Retention-obsessed operators.</h1>
           <p>
-            Paudelon is a B2B studio for IT, email automation, and web systems—built for teams that need results without the agency theater.
+            Paudelon isn’t a generic marketing shop. We live in flows, QA, and brand synergy—so DTC brands get a retention partner that actually scales.
           </p>
         </div>
       </section>
 
       <section className="section">
-        <div className="container" style={{ maxWidth: 720 }}>
-          <span className="eyebrow">Why we exist</span>
-          <h2 style={{ marginBottom: '1rem' }}>One team instead of three vendors.</h2>
-          <p style={{ marginBottom: '1rem' }}>
-            Most SMBs juggle separate IT help, email marketers, and web freelancers. Systems drift apart. Messages bounce. Sites slow down. Nobody owns the full picture.
-          </p>
-          <p>
-            We close that gap: deliverability and DNS, automated customer journeys, and websites that actually support the sales motion—under one accountable partner.
-          </p>
-        </div>
-      </section>
-
-      <section className="section" style={{ background: 'rgba(247, 248, 250, 0.7)' }}>
         <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">Principles</span>
-            <h2>What guides the work.</h2>
-          </div>
-          <div className="feature-strip">
-            {pillars.map((p) => (
-              <div key={p.title}>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-              </div>
+          <Reveal className="section-head">
+            <span className="eyebrow">How we show up</span>
+            <h2>What that means for your brand.</h2>
+          </Reveal>
+          <div className="experts-grid">
+            {experts.map((item, idx) => (
+              <Reveal key={item.title} className="expert-card" delay={idx * 80}>
+                <div className="expert-avatar">{item.initials}</div>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -69,14 +58,16 @@ export default function AboutPage() {
 
       <section className="section-tight">
         <div className="container">
-          <div className="cta-band">
-            <h2>Prefer a direct conversation?</h2>
-            <p>We will review your current setup and tell you honestly what is worth fixing first.</p>
-            <button className="btn btn-primary" onClick={() => openQuote()}>
-              Work with us
+          <Reveal className="cta-band cta-advanced">
+            <div>
+              <h2>Ready to meet the team?</h2>
+              <p>Book a call and we’ll walk through your current retention stack honestly.</p>
+            </div>
+            <MagneticButton className="btn btn-primary btn-arrow" onClick={() => openQuote('Book a Call')}>
+              Book a call
               <ArrowRight size={16} />
-            </button>
-          </div>
+            </MagneticButton>
+          </Reveal>
         </div>
       </section>
     </>

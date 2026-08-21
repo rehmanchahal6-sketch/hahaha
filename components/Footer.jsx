@@ -1,21 +1,34 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [done, setDone] = useState(false);
+
+  const subscribe = (e) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setDone(true);
+  };
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div>
-            <Link href="/" className="brand" style={{ marginBottom: '0.85rem', display: 'inline-flex' }}>
+            <Link href="/" className="brand" style={{ display: 'inline-flex', marginBottom: '0.85rem' }}>
               Paudel<span>on</span>
             </Link>
-            <p style={{ maxWidth: '28ch', fontSize: '0.98rem' }}>
-              Technology, email systems, and web work for businesses that need reliable operators—not another agency pitch deck.
+            <p style={{ maxWidth: '32ch', marginBottom: '1.25rem' }}>
+              Retention expertise for DTC brands—email & SMS systems that scale repeat revenue.
             </p>
-            <p style={{ marginTop: '1rem', fontSize: '0.95rem' }}>
-              <a href="mailto:hello@paudelon.com">hello@paudelon.com</a>
-            </p>
-            <p style={{ marginTop: '0.65rem', fontSize: '0.92rem', lineHeight: 1.5, maxWidth: '28ch' }}>
+            <p style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+              <a href="tel:+13072040051">+1 (307) 204-0051</a>
+              <br />
+              <a href="mailto:raman@greyemails.com">raman@greyemails.com</a>
+              <br />
               30 N Gould St Ste R
               <br />
               Sheridan, WY 82801
@@ -23,21 +36,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5>Services</h5>
+            <h5>Explore</h5>
             <ul className="footer-links">
-              <li><Link href="/services">Email Marketing</Link></li>
-              <li><Link href="/services">Email Automation</Link></li>
-              <li><Link href="/services">Web Development</Link></li>
-              <li><Link href="/services">IT Consulting</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h5>Company</h5>
-            <ul className="footer-links">
-              <li><Link href="/about">About</Link></li>
+              <li><Link href="/services">Services</Link></li>
+              <li><Link href="/about">Experts</Link></li>
               <li><Link href="/pricing">Pricing</Link></li>
-              <li><Link href="/faq">FAQ</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
@@ -50,11 +53,35 @@ export default function Footer() {
               <li><Link href="/refund-policy">Refund Policy</Link></li>
             </ul>
           </div>
+
+          <div>
+            <h5>Newsletter</h5>
+            <p style={{ fontSize: '0.92rem', marginBottom: '0.85rem' }}>
+              Strategies and retention updates—no fluff.
+            </p>
+            {done ? (
+              <p style={{ color: 'var(--accent)', fontFamily: 'var(--font-ui)', fontWeight: 700 }}>Subscribed.</p>
+            ) : (
+              <form className="newsletter" onSubmit={subscribe}>
+                <input
+                  className="form-input"
+                  type="email"
+                  required
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <button className="btn btn-primary btn-sm" type="submit">
+                  Subscribe
+                </button>
+              </form>
+            )}
+          </div>
         </div>
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Paudelon. All rights reserved.</span>
-          <span>Built for small and mid-size teams.</span>
+          <span>Retention Expertise Agency</span>
         </div>
       </div>
     </footer>

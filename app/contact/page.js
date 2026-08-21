@@ -1,17 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle2, Mail, Clock, Send, MapPin } from 'lucide-react';
+import { CheckCircle2, Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
 
 export default function ContactPage() {
-  const { showToast } = useQuote();
+  const { showToast, openQuote } = useQuote();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    service: 'Email Marketing Campaigns',
-    budget: '$1,000 - $3,000 / mo',
+    service: 'Book a Call',
+    budget: '$3,000 - $7,000 / mo',
     message: '',
   });
   const [errors, setErrors] = useState({});
@@ -45,7 +45,7 @@ export default function ContactPage() {
       setDone(true);
       showToast({
         title: 'Message sent',
-        message: 'We will respond within one business day.',
+        message: 'We’ll reply to schedule your call.',
       });
     }, 800);
   };
@@ -55,8 +55,8 @@ export default function ContactPage() {
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">Contact</span>
-          <h1>Tell us what you need help with.</h1>
-          <p>Questions about deliverability, automation, or a new site—send the details and we will reply promptly.</p>
+          <h1>Book your call.</h1>
+          <p>Tell us about your brand and current retention setup—we’ll follow up fast.</p>
         </div>
       </section>
 
@@ -64,18 +64,26 @@ export default function ContactPage() {
         <div className="container">
           <div className="services-grid">
             <div>
-              <h3 style={{ marginBottom: '0.75rem' }}>Reach the team</h3>
+              <h3 style={{ marginBottom: '0.75rem' }}>Talk to Paudelon</h3>
               <p style={{ marginBottom: '1.5rem' }}>
-                Prefer email? Write us directly or use the form. We treat every inquiry as confidential.
+                Prefer to skip the form? Call or email us directly.
               </p>
-
               <div style={{ display: 'grid', gap: '1rem' }}>
+                <div className="panel" style={{ display: 'flex', gap: '0.85rem', alignItems: 'center' }}>
+                  <Phone size={18} color="var(--accent)" />
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--dim)' }}>Phone</div>
+                    <a href="tel:+13072040051" style={{ fontWeight: 650 }}>
+                      +1 (307) 204-0051
+                    </a>
+                  </div>
+                </div>
                 <div className="panel" style={{ display: 'flex', gap: '0.85rem', alignItems: 'center' }}>
                   <Mail size={18} color="var(--accent)" />
                   <div>
                     <div style={{ fontSize: '0.8rem', color: 'var(--dim)' }}>Email</div>
-                    <a href="mailto:hello@paudelon.com" style={{ fontWeight: 650 }}>
-                      hello@paudelon.com
+                    <a href="mailto:raman@greyemails.com" style={{ fontWeight: 650 }}>
+                      raman@greyemails.com
                     </a>
                   </div>
                 </div>
@@ -90,22 +98,22 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-                <div className="panel" style={{ display: 'flex', gap: '0.85rem', alignItems: 'center' }}>
-                  <Clock size={18} color="var(--accent)" />
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--dim)' }}>Hours</div>
-                    <div style={{ fontWeight: 650 }}>Mon–Fri, 9:00–18:00 EST</div>
-                  </div>
-                </div>
               </div>
+              <button
+                className="btn btn-secondary"
+                style={{ marginTop: '1.25rem' }}
+                onClick={() => openQuote('Book a Call')}
+              >
+                Open quick book-a-call form
+              </button>
             </div>
 
             <div className="panel" style={{ padding: '1.75rem' }}>
               {done ? (
                 <div style={{ textAlign: 'center', padding: '2rem 0.5rem' }}>
                   <CheckCircle2 size={36} color="var(--accent)" style={{ margin: '0 auto 1rem' }} />
-                  <h3 style={{ marginBottom: '0.5rem' }}>Thanks—message received.</h3>
-                  <p style={{ marginBottom: '1.25rem' }}>A specialist will follow up shortly.</p>
+                  <h3 style={{ marginBottom: '0.5rem' }}>Got it—talk soon.</h3>
+                  <p style={{ marginBottom: '1.25rem' }}>We’ll reach out to lock in a time.</p>
                   <button className="btn btn-secondary" onClick={() => setDone(false)}>
                     Send another
                   </button>
@@ -124,7 +132,7 @@ export default function ContactPage() {
                       {errors.name && <span className="form-error-msg">{errors.name}</span>}
                     </div>
                     <div className="form-group">
-                      <label className="form-label">Business email *</label>
+                      <label className="form-label">Work email *</label>
                       <input
                         type="email"
                         className="form-input"
@@ -134,46 +142,30 @@ export default function ContactPage() {
                       {errors.email && <span className="form-error-msg">{errors.email}</span>}
                     </div>
                   </div>
-                  <div className="grid-2">
-                    <div className="form-group">
-                      <label className="form-label">Company *</label>
-                      <input
-                        className="form-input"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      />
-                      {errors.company && <span className="form-error-msg">{errors.company}</span>}
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">Service</label>
-                      <select
-                        className="form-select"
-                        value={formData.service}
-                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      >
-                        <option>Email Marketing Campaigns</option>
-                        <option>Email Automation</option>
-                        <option>Website Development</option>
-                        <option>IT Consulting & Support</option>
-                        <option>Business Automation</option>
-                      </select>
-                    </div>
+                  <div className="form-group">
+                    <label className="form-label">Brand / company *</label>
+                    <input
+                      className="form-input"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    />
+                    {errors.company && <span className="form-error-msg">{errors.company}</span>}
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Budget</label>
+                    <label className="form-label">Monthly revenue range</label>
                     <select
                       className="form-select"
                       value={formData.budget}
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     >
-                      <option>Under $1,000 / mo</option>
-                      <option>$1,000 - $3,000 / mo</option>
-                      <option>$3,000 - $7,000 / mo</option>
-                      <option>$7,000+ / mo</option>
+                      <option>Under $100K / mo</option>
+                      <option>$100K – $250K / mo</option>
+                      <option>$250K – $1M / mo</option>
+                      <option>$1M+ / mo</option>
                     </select>
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Message *</label>
+                    <label className="form-label">What should we cover on the call? *</label>
                     <textarea
                       className="form-textarea"
                       rows={4}
@@ -183,7 +175,7 @@ export default function ContactPage() {
                     {errors.message && <span className="form-error-msg">{errors.message}</span>}
                   </div>
                   <button type="submit" className="btn btn-primary btn-full" disabled={isSubmitting}>
-                    {isSubmitting ? 'Sending…' : 'Submit inquiry'}
+                    {isSubmitting ? 'Sending…' : 'Book a call'}
                     <Send size={15} />
                   </button>
                 </form>

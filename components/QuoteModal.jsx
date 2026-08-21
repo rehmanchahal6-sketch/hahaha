@@ -44,8 +44,8 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
       setIsSubmitting(false);
       onClose();
       showToast({
-        title: 'Quote request sent',
-        message: 'A Paudelon specialist will reply within one business day.',
+        title: 'Call request sent',
+        message: 'A Paudelon specialist will reach out to schedule your call.',
       });
       setFormData({
         name: '',
@@ -65,10 +65,10 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
           <X size={18} />
         </button>
 
-        <p className="eyebrow">Quote request</p>
-        <h2 style={{ fontSize: '1.75rem', marginBottom: '0.35rem' }}>Tell us what you need</h2>
+        <p className="eyebrow">Book a call</p>
+        <h2 style={{ fontSize: '1.75rem', marginBottom: '0.35rem' }}>Let’s map your retention plan</h2>
         <p style={{ marginBottom: '1.5rem', fontSize: '0.98rem' }}>
-          Share a few details and we will send a clear scope with pricing—no filler decks.
+          Share a few details and we’ll follow up to schedule your strategy call.
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -156,7 +156,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
               Cancel
             </button>
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending…' : 'Submit request'}
+              {isSubmitting ? 'Sending…' : 'Book my call'}
               <Send size={15} />
             </button>
           </div>
