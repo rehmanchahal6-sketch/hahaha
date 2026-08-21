@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle2, Mail, Clock, Send } from 'lucide-react';
+import { CheckCircle2, Mail, Clock, Send, MapPin } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
 
 export default function ContactPage() {
@@ -77,6 +77,17 @@ export default function ContactPage() {
                     <a href="mailto:hello@paudelon.com" style={{ fontWeight: 650 }}>
                       hello@paudelon.com
                     </a>
+                  </div>
+                </div>
+                <div className="panel" style={{ display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
+                  <MapPin size={18} color="var(--accent)" style={{ marginTop: 2 }} />
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--dim)' }}>Address</div>
+                    <div style={{ fontWeight: 650, lineHeight: 1.45 }}>
+                      30 N Gould St Ste R
+                      <br />
+                      Sheridan, WY 82801
+                    </div>
                   </div>
                 </div>
                 <div className="panel" style={{ display: 'flex', gap: '0.85rem', alignItems: 'center' }}>

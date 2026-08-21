@@ -15,6 +15,11 @@ export default function Footer() {
             <p style={{ marginTop: '1rem', fontSize: '0.95rem' }}>
               <a href="mailto:hello@paudelon.com">hello@paudelon.com</a>
             </p>
+            <p style={{ marginTop: '0.65rem', fontSize: '0.92rem', lineHeight: 1.5, maxWidth: '28ch' }}>
+              30 N Gould St Ste R
+              <br />
+              Sheridan, WY 82801
+            </p>
           </div>
 
           <div>
