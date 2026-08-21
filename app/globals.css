@@ -156,7 +156,7 @@ p {
 }
 
 .btn-secondary:hover {
-  border-color: #bbb;
+  border-color: #888;
 }
 
 .btn-full {
@@ -585,7 +585,7 @@ p {
 .filter-chip.active,
 .filter-chip:hover {
   color: var(--ink);
-  border-color: #bbb;
+  border-color: #888;
   background: var(--accent-soft);
 }
 
