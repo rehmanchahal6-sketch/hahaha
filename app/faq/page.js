@@ -17,7 +17,7 @@ const faqItems = [
   },
   {
     category: 'Email Marketing',
-    q: 'How does email marketing work with Nexora Digital?',
+    q: 'How does email marketing work with Paudelon?',
     a: 'We handle DNS authentication, list hygiene, templates, copy, drip automation, and conversion reporting end to end.',
   },
   {

@@ -32,7 +32,7 @@ export default function AboutPage() {
           <span className="eyebrow">About</span>
           <h1>Operators for growing businesses.</h1>
           <p>
-            Nexora Digital is a B2B studio for IT, email automation, and web systems—built for teams that need results without the agency theater.
+            Paudelon is a B2B studio for IT, email automation, and web systems—built for teams that need results without the agency theater.
           </p>
         </div>
       </section>

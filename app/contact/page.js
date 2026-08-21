@@ -74,8 +74,8 @@ export default function ContactPage() {
                   <Mail size={18} color="var(--accent)" />
                   <div>
                     <div style={{ fontSize: '0.8rem', color: 'var(--dim)' }}>Email</div>
-                    <a href="mailto:hello@nexoradigital.com" style={{ fontWeight: 650 }}>
-                      hello@nexoradigital.com
+                    <a href="mailto:hello@paudelon.com" style={{ fontWeight: 650 }}>
+                      hello@paudelon.com
                     </a>
                   </div>
                 </div>

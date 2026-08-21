@@ -1,6 +1,6 @@
-# Nexora Digital
+# Paudelon
 
-Next.js (App Router) + React site for Nexora Digital.
+Next.js (App Router) + React site for Paudelon.
 
 ## Scripts
 

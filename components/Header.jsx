@@ -24,7 +24,7 @@ export default function Header() {
     <header className="navbar">
       <div className="nav-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          Nexora<span>Digital</span>
+          Paudelon
         </Link>
 
         <nav aria-label="Primary">

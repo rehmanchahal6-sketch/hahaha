@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Privacy Policy | Nexora Digital',
+  title: 'Privacy Policy | Paudelon',
 };
 
 export default function PrivacyPage() {
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <div className="container legal-copy" style={{ maxWidth: 820 }}>
           <h3>1. Overview & information we collect</h3>
           <p>
-            Nexora Digital respects your privacy. This policy explains how we collect, process, and protect personal and business data when you visit our website or engage our services. We collect information you provide through forms and consultations, including name, business email, company name, phone number, and project details.
+            Paudelon respects your privacy. This policy explains how we collect, process, and protect personal and business data when you visit our website or engage our services. We collect information you provide through forms and consultations, including name, business email, company name, phone number, and project details.
           </p>
           <h3>2. How we use your information</h3>
           <p>We use collected information for legitimate business purposes:</p>
@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           <h3>5. Your rights & contact</h3>
           <p>
             You may request access to, correction of, or deletion of your personal data. Contact{' '}
-            <a href="mailto:hello@nexoradigital.com">hello@nexoradigital.com</a>.
+            <a href="mailto:hello@paudelon.com">hello@paudelon.com</a>.
           </p>
         </div>
       </section>

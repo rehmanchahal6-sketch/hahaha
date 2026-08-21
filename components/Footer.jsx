@@ -7,13 +7,13 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <Link href="/" className="brand" style={{ marginBottom: '0.85rem', display: 'inline-flex' }}>
-              Nexora<span>Digital</span>
+              Paudelon
             </Link>
             <p style={{ maxWidth: '28ch', fontSize: '0.98rem' }}>
               Technology, email systems, and web work for businesses that need reliable operators—not another agency pitch deck.
             </p>
             <p style={{ marginTop: '1rem', fontSize: '0.95rem' }}>
-              <a href="mailto:hello@nexoradigital.com">hello@nexoradigital.com</a>
+              <a href="mailto:hello@paudelon.com">hello@paudelon.com</a>
             </p>
           </div>
 
@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Nexora Digital. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Paudelon. All rights reserved.</span>
           <span>Built for small and mid-size teams.</span>
         </div>
       </div>

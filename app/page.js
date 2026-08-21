@@ -136,7 +136,7 @@ export default function HomePage() {
         <div className="hero-media">
           <Image
             src="/images/hero_dashboard.png"
-            alt="Nexora Digital operations dashboard"
+            alt="Paudelon operations dashboard"
             fill
             priority
             sizes="100vw"
@@ -146,7 +146,7 @@ export default function HomePage() {
         </div>
         <div className="hero-content">
           <span className="hero-brand">
-            Nexora<em>Digital</em>
+            Paudel<em>on</em>
           </span>
           <h1>Technology and email that keep your business moving.</h1>
           <p>

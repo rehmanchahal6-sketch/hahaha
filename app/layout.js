@@ -17,9 +17,9 @@ const body = Source_Serif_4({
 });
 
 export const metadata = {
-  title: 'Nexora Digital | Technology, Automation & Email Marketing',
+  title: 'Paudelon | Technology, Automation & Email Marketing',
   description:
-    'Nexora Digital provides business IT services, email marketing, marketing automation, and custom web solutions for growing small and medium-sized businesses.',
+    'Paudelon provides business IT services, email marketing, marketing automation, and custom web solutions for growing small and medium-sized businesses.',
 };
 
 export default function RootLayout({ children }) {

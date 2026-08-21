@@ -45,7 +45,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
       onClose();
       showToast({
         title: 'Quote request sent',
-        message: 'A Nexora Digital specialist will reply within one business day.',
+        message: 'A Paudelon specialist will reply within one business day.',
       });
       setFormData({
         name: '',

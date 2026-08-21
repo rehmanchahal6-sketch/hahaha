@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Refund Policy | Nexora Digital',
+  title: 'Refund Policy | Paudelon',
 };
 
 export default function RefundPage() {
@@ -28,7 +28,7 @@ export default function RefundPage() {
           </p>
           <h3>4. How to cancel</h3>
           <p>
-            Email <a href="mailto:hello@nexoradigital.com">hello@nexoradigital.com</a> with your company name, contract reference, and reason for cancellation.
+            Email <a href="mailto:hello@paudelon.com">hello@paudelon.com</a> with your company name, contract reference, and reason for cancellation.
           </p>
         </div>
       </section>
