@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check, ChevronDown } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
+import Reveal from '@/components/Reveal';
 
 const capabilities = [
   {
@@ -107,6 +108,17 @@ const packages = [
   },
 ];
 
+const platforms = [
+  'Klaviyo',
+  'HubSpot',
+  'ActiveCampaign',
+  'Mailchimp',
+  'Shopify',
+  'WordPress',
+  'Next.js',
+  'Google Workspace',
+];
+
 const faqs = [
   {
     q: 'What do you actually do?',
@@ -143,17 +155,20 @@ export default function HomePage() {
             style={{ objectFit: 'cover' }}
           />
           <div className="hero-scrim" />
+          <div className="hero-grain" aria-hidden />
         </div>
         <div className="hero-content">
-          <span className="hero-brand">
+          <span className="hero-brand hero-anim" style={{ '--d': '0ms' }}>
             Paudel<em>on</em>
           </span>
-          <h1>Technology and email that keep your business moving.</h1>
-          <p>
+          <h1 className="hero-anim" style={{ '--d': '120ms' }}>
+            Technology and email that keep your business moving.
+          </h1>
+          <p className="hero-anim" style={{ '--d': '220ms' }}>
             We simplify your stack, automate the repetitive work, and turn email into a channel you can trust.
           </p>
-          <div className="hero-ctas">
-            <button className="btn btn-primary" onClick={() => openQuote()}>
+          <div className="hero-ctas hero-anim" style={{ '--d': '320ms' }}>
+            <button className="btn btn-primary btn-arrow" onClick={() => openQuote()}>
               Get started
               <ArrowRight size={16} />
             </button>
@@ -162,43 +177,59 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+        <div className="hero-scroll" aria-hidden>
+          <span>Scroll</span>
+          <i />
+        </div>
       </section>
+
+      <div className="marquee" aria-label="Platforms we work with">
+        <div className="marquee-track">
+          {[...platforms, ...platforms].map((name, i) => (
+            <span key={`${name}-${i}`}>{name}</span>
+          ))}
+        </div>
+      </div>
 
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <Reveal className="section-head">
             <span className="eyebrow">What we cover</span>
             <h2>Four capabilities. One accountable team.</h2>
             <p>Pick a lane or combine them—we keep the systems connected.</p>
-          </div>
+          </Reveal>
           <div className="split-list">
-            {capabilities.map((item) => (
-              <div className="split-row" key={item.title}>
-                <h3>{item.title}</h3>
+            {capabilities.map((item, idx) => (
+              <Reveal key={item.title} className="split-row" delay={idx * 70}>
+                <div className="split-meta">
+                  <span className="split-index">0{idx + 1}</span>
+                  <h3>{item.title}</h3>
+                </div>
                 <p>{item.desc}</p>
-                <button className="btn btn-ghost btn-sm" onClick={() => openQuote(item.service)}>
+                <button className="btn btn-ghost btn-sm btn-arrow" onClick={() => openQuote(item.service)}>
                   Request quote
+                  <ArrowRight size={14} />
                 </button>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section" style={{ background: 'rgba(247, 248, 250, 0.7)' }}>
+      <section className="section section-muted">
         <div className="container">
-          <div className="section-head center">
+          <Reveal className="section-head center">
             <span className="eyebrow">How we work</span>
             <h2>Discover. Build. Grow.</h2>
             <p>A short path from audit to systems that stay useful.</p>
-          </div>
-          <div className="steps">
-            {steps.map((step) => (
-              <div key={step.n}>
+          </Reveal>
+          <div className="steps process-rail">
+            {steps.map((step, idx) => (
+              <Reveal key={step.n} className="step-card" delay={idx * 90}>
                 <span className="step-num">{step.n}</span>
-                <h3 style={{ marginBottom: '0.55rem' }}>{step.title}</h3>
+                <h3>{step.title}</h3>
                 <p>{step.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -206,31 +237,35 @@ export default function HomePage() {
 
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <Reveal className="section-head">
             <span className="eyebrow">Why teams stay</span>
             <h2>Practical partners, not another SaaS wrapper.</h2>
-          </div>
+          </Reveal>
           <div className="feature-strip">
-            {reasons.map((item) => (
-              <div key={item.title}>
+            {reasons.map((item, idx) => (
+              <Reveal key={item.title} delay={idx * 80}>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section" style={{ background: 'rgba(247, 248, 250, 0.7)' }}>
+      <section className="section section-muted">
         <div className="container">
-          <div className="section-head center">
+          <Reveal className="section-head center">
             <span className="eyebrow">Packages</span>
             <h2>Start with a clear scope.</h2>
             <p>Every package ends with a transparent quote—not a black-box retainer.</p>
-          </div>
+          </Reveal>
           <div className="pricing-grid">
-            {packages.map((pkg) => (
-              <div key={pkg.title} className={`price-card ${pkg.featured ? 'featured' : ''}`}>
+            {packages.map((pkg, idx) => (
+              <Reveal
+                key={pkg.title}
+                className={`price-card ${pkg.featured ? 'featured' : ''}`}
+                delay={idx * 90}
+              >
                 <div>
                   <span className="tag">{pkg.tag}</span>
                   <h3>{pkg.title}</h3>
@@ -245,12 +280,13 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <button
-                  className={`btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'} btn-full`}
+                  className={`btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'} btn-full btn-arrow`}
                   onClick={() => openQuote(pkg.service)}
                 >
                   Get a quote
+                  <ArrowRight size={15} />
                 </button>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -258,33 +294,30 @@ export default function HomePage() {
 
       <section className="section">
         <div className="container" style={{ maxWidth: 760 }}>
-          <div className="section-head center" style={{ marginInline: 'auto' }}>
+          <Reveal className="section-head center" style={{ marginInline: 'auto' }}>
             <span className="eyebrow">FAQ</span>
             <h2>Straight answers.</h2>
-          </div>
-          <div className="accordion">
-            {faqs.map((faq, index) => (
-              <div key={faq.q} className="accordion-item">
-                <button
-                  className="accordion-header"
-                  onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
-                >
-                  {faq.q}
-                  <ChevronDown
-                    size={18}
-                    style={{
-                      transform: openFaq === index ? 'rotate(180deg)' : 'none',
-                      transition: 'transform 0.25s ease',
-                      color: 'var(--accent)',
-                    }}
-                  />
-                </button>
-                {openFaq === index && <div className="accordion-content">{faq.a}</div>}
-              </div>
-            ))}
-          </div>
+          </Reveal>
+          <Reveal>
+            <div className="accordion">
+              {faqs.map((faq, index) => (
+                <div key={faq.q} className={`accordion-item ${openFaq === index ? 'open' : ''}`}>
+                  <button
+                    className="accordion-header"
+                    onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
+                  >
+                    {faq.q}
+                    <ChevronDown size={18} className="accordion-icon" />
+                  </button>
+                  <div className="accordion-panel" hidden={openFaq !== index}>
+                    <div className="accordion-content">{faq.a}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
           <p style={{ marginTop: '1.25rem', textAlign: 'center' }}>
-            <Link href="/faq" style={{ color: 'var(--accent)', fontFamily: 'var(--font-ui)', fontWeight: 650 }}>
+            <Link href="/faq" className="text-link">
               Browse all questions →
             </Link>
           </p>
@@ -293,14 +326,16 @@ export default function HomePage() {
 
       <section className="section-tight">
         <div className="container">
-          <div className="cta-band">
-            <h2>Ready for a smarter setup?</h2>
-            <p>Tell us where your systems are stuck. We will propose a focused plan and a clear number.</p>
-            <button className="btn btn-primary" onClick={() => openQuote()}>
+          <Reveal className="cta-band cta-advanced">
+            <div className="cta-copy">
+              <h2>Ready for a smarter setup?</h2>
+              <p>Tell us where your systems are stuck. We will propose a focused plan and a clear number.</p>
+            </div>
+            <button className="btn btn-primary btn-arrow" onClick={() => openQuote()}>
               Request a quote
               <ArrowRight size={16} />
             </button>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

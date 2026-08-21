@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowRight } from 'lucide-react';
@@ -19,12 +19,24 @@ export default function Header() {
   const pathname = usePathname();
   const { openQuote } = useQuote();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
-    <header className="navbar">
+    <header className={`navbar ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="nav-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          Paudelon
+          Paudel<span>on</span>
         </Link>
 
         <nav aria-label="Primary">
@@ -43,13 +55,14 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <button className="btn btn-primary btn-sm" onClick={() => openQuote()}>
+          <button className="btn btn-primary btn-sm btn-arrow" onClick={() => openQuote()}>
             Get Started
             <ArrowRight size={14} />
           </button>
           <button
             className="menu-btn"
             aria-label="Toggle navigation"
+            aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
@@ -70,7 +83,7 @@ export default function Header() {
             </Link>
           ))}
           <button
-            className="btn btn-primary"
+            className="btn btn-primary btn-arrow"
             style={{ marginTop: '0.75rem' }}
             onClick={() => {
               setOpen(false);

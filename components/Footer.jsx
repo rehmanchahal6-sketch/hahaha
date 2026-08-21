@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <Link href="/" className="brand" style={{ marginBottom: '0.85rem', display: 'inline-flex' }}>
-              Paudelon
+              Paudel<span>on</span>
             </Link>
             <p style={{ maxWidth: '28ch', fontSize: '0.98rem' }}>
               Technology, email systems, and web work for businesses that need reliable operators—not another agency pitch deck.
