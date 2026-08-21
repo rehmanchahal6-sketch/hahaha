@@ -47,10 +47,14 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <button className="btn btn-primary btn-sm nav-cta" onClick={() => openQuote()}>
+          <Link href="/contact" className="btn btn-secondary btn-sm nav-contact">
+            Contact
+          </Link>
+          <button type="button" className="btn btn-primary btn-sm" onClick={() => openQuote()}>
             Get a quote
           </button>
           <button
+            type="button"
             className="menu-btn"
             aria-label="Toggle navigation"
             aria-expanded={open}
@@ -73,9 +77,17 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <button
-            className="btn btn-primary"
+          <Link
+            href="/contact"
+            className="btn btn-secondary"
             style={{ marginTop: '0.65rem' }}
+            onClick={() => setOpen(false)}
+          >
+            Contact
+          </Link>
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={() => {
               setOpen(false);
               openQuote();

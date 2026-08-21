@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Check, ChevronDown } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
+import Accordion from '@/components/Accordion';
 
 const services = [
   {
@@ -51,17 +51,38 @@ const testimonials = [
   {
     quote:
       'Paudelon cleaned up our email authentication and rebuilt the welcome flow. Deliverability improved within the first month.',
-    name: 'Operations lead, regional retailer',
+    name: 'Jordan Lee',
+    role: 'Operations lead, regional retailer',
   },
   {
     quote:
       'Clear scope, no surprise fees, and the site they shipped is easy for our team to update.',
-    name: 'Founder, professional services firm',
+    name: 'Sam Rivera',
+    role: 'Founder, professional services firm',
   },
   {
     quote:
       'We finally have automations that match how we sell—without juggling three different vendors.',
-    name: 'Marketing manager, B2B SaaS',
+    name: 'Alex Chen',
+    role: 'Marketing manager, B2B software',
+  },
+  {
+    quote:
+      'They treated DNS and deliverability like a real project, not an afterthought. Inbox placement got noticeably better.',
+    name: 'Morgan Blake',
+    role: 'E-commerce brand owner',
+  },
+  {
+    quote:
+      'Straight answers, written quotes, and work that matched what we agreed. That’s rare.',
+    name: 'Casey Nguyen',
+    role: 'Director, local services company',
+  },
+  {
+    quote:
+      'Our old site was slow and hard to edit. The new one loads fast and we can change content ourselves.',
+    name: 'Riley Thompson',
+    role: 'Owner, boutique studio',
   },
 ];
 
@@ -121,7 +142,6 @@ const faqs = [
 
 export default function HomePage() {
   const { openQuote } = useQuote();
-  const [openFaq, setOpenFaq] = useState(0);
 
   return (
     <>
@@ -179,34 +199,44 @@ export default function HomePage() {
 
       <section className="section section-alt">
         <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">Process</span>
-            <h2>How we work</h2>
-          </div>
-          <div className="steps">
-            {steps.map((step) => (
-              <div key={step.n}>
-                <span className="step-num">{step.n}</span>
-                <h3 style={{ marginBottom: '0.4rem' }}>{step.title}</h3>
-                <p>{step.desc}</p>
-              </div>
-            ))}
+          <div className="process-layout">
+            <div className="section-head process-intro">
+              <span className="eyebrow">Process</span>
+              <h2>How we work</h2>
+              <p>Three steps. No mystery phases, no padded timelines.</p>
+            </div>
+            <ol className="process-list">
+              {steps.map((step) => (
+                <li className="process-item" key={step.n}>
+                  <span className="process-index" aria-hidden>
+                    {step.n}
+                  </span>
+                  <div className="process-body">
+                    <h3>{step.title}</h3>
+                    <p>{step.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-alt" id="testimonials">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Clients</span>
+            <span className="eyebrow">Testimonials</span>
             <h2>What clients are saying</h2>
-            <p>A few notes from recent work. More case studies coming as we grow.</p>
+            <p>Real feedback from teams we’ve helped with email, web, and IT work.</p>
           </div>
           <div className="testimonials">
             {testimonials.map((item) => (
               <figure className="testimonial" key={item.name}>
                 <blockquote>“{item.quote}”</blockquote>
-                <cite>{item.name}</cite>
+                <cite>
+                  <strong>{item.name}</strong>
+                  <span>{item.role}</span>
+                </cite>
               </figure>
             ))}
           </div>
@@ -254,26 +284,7 @@ export default function HomePage() {
             <span className="eyebrow">FAQ</span>
             <h2>Common questions</h2>
           </div>
-          <div className="accordion">
-            {faqs.map((faq, index) => (
-              <div key={faq.q} className="accordion-item">
-                <button
-                  className="accordion-header"
-                  onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
-                >
-                  {faq.q}
-                  <ChevronDown
-                    size={18}
-                    style={{
-                      transform: openFaq === index ? 'rotate(180deg)' : 'none',
-                      transition: 'transform 0.2s ease',
-                    }}
-                  />
-                </button>
-                {openFaq === index && <div className="accordion-content">{faq.a}</div>}
-              </div>
-            ))}
-          </div>
+          <Accordion items={faqs} />
           <p style={{ marginTop: '1rem' }}>
             <Link href="/faq" className="text-link">
               More questions

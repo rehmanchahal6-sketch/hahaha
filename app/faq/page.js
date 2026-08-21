@@ -1,8 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ChevronDown, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
+import Accordion from '@/components/Accordion';
 
 const faqItems = [
   {
@@ -68,7 +69,6 @@ export default function FAQPage() {
   const { openQuote } = useQuote();
   const [category, setCategory] = useState('All');
   const [query, setQuery] = useState('');
-  const [openIndex, setOpenIndex] = useState(0);
 
   const filtered = useMemo(
     () =>
@@ -117,39 +117,18 @@ export default function FAQPage() {
             {categories.map((cat) => (
               <button
                 key={cat}
+                type="button"
                 className={`filter-chip ${category === cat ? 'active' : ''}`}
-                onClick={() => {
-                  setCategory(cat);
-                  setOpenIndex(0);
-                }}
+                onClick={() => setCategory(cat)}
               >
                 {cat}
               </button>
             ))}
           </div>
 
-          <div className="accordion">
-            {filtered.map((faq, idx) => (
-              <div key={faq.q} className="accordion-item">
-                <button
-                  className="accordion-header"
-                  onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}
-                >
-                  {faq.q}
-                  <ChevronDown
-                    size={18}
-                    style={{
-                      transform: openIndex === idx ? 'rotate(180deg)' : 'none',
-                      transition: 'transform 0.2s ease',
-                    }}
-                  />
-                </button>
-                {openIndex === idx && <div className="accordion-content">{faq.a}</div>}
-              </div>
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
+          {filtered.length > 0 ? (
+            <Accordion key={`${category}-${query}`} items={filtered} />
+          ) : (
             <p style={{ padding: '2rem 0', textAlign: 'center' }}>No matching questions.</p>
           )}
 
@@ -158,7 +137,7 @@ export default function FAQPage() {
               <h2>Still stuck?</h2>
               <p>Ask us directly—happy to clarify.</p>
             </div>
-            <button className="btn btn-primary" onClick={() => openQuote()}>
+            <button className="btn btn-primary" type="button" onClick={() => openQuote()}>
               Get a quote
             </button>
           </div>
