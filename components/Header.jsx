@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
 
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/about', label: 'Experts' },
+  { href: '/about', label: 'About' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
@@ -19,24 +19,16 @@ export default function Header() {
   const pathname = usePathname();
   const { openQuote } = useQuote();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 18);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
   return (
-    <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>
+    <header className="navbar">
       <div className="nav-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          Paudel<span>on</span>
+          Paudelon
         </Link>
 
         <nav aria-label="Primary">
@@ -55,9 +47,8 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <button className="btn btn-primary btn-sm btn-arrow" onClick={() => openQuote('Book a Call')}>
-            Book a call
-            <ArrowRight size={14} />
+          <button className="btn btn-primary btn-sm" onClick={() => openQuote()}>
+            Get a quote
           </button>
           <button
             className="menu-btn"
@@ -65,7 +56,7 @@ export default function Header() {
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X size={20} /> : <Menu size={20} />}
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
@@ -83,15 +74,14 @@ export default function Header() {
             </Link>
           ))}
           <button
-            className="btn btn-primary btn-arrow"
-            style={{ marginTop: '0.75rem' }}
+            className="btn btn-primary"
+            style={{ marginTop: '0.65rem' }}
             onClick={() => {
               setOpen(false);
-              openQuote('Book a Call');
+              openQuote();
             }}
           >
-            Book a call
-            <ArrowRight size={16} />
+            Get a quote
           </button>
         </div>
       )}

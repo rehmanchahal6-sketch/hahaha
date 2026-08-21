@@ -1,80 +1,49 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowRight, Check, Search } from 'lucide-react';
+import { Check, Search } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
-import Reveal from '@/components/Reveal';
 
 const servicesData = [
   {
-    category: 'Setup',
-    title: 'Email & SMS framework setup',
-    desc: 'Workflows that nurture leads, recover carts, and reward loyal shoppers with segmented, personalized messaging.',
-    deliverables: [
-      'Core lifecycle flows',
-      'Email + SMS channel setup',
-      'Segmentation foundations',
-      'Template system',
-    ],
+    category: 'Email',
+    title: 'Email marketing',
+    desc: 'Campaign planning, templates, and reporting for regular sends.',
+    deliverables: ['Template design', 'Campaign copy', 'List hygiene', 'Performance summary'],
   },
   {
-    category: 'Campaigns',
-    title: 'Strategic campaigns',
-    desc: 'Data-backed promotions for launches, holidays, and always-on revenue pushes.',
-    deliverables: [
-      'Campaign calendar',
-      'Audience targeting',
-      'Offer & creative strategy',
-      'Launch QA',
-    ],
+    category: 'Email',
+    title: 'Email automation',
+    desc: 'Triggered flows for welcome, nurture, and re-engagement.',
+    deliverables: ['Welcome series', 'Behavioral triggers', 'Tagging setup', 'Flow QA'],
   },
   {
-    category: 'Optimization',
-    title: 'Continuous A/B testing',
-    desc: 'Systematic experiments on subject lines, layouts, and offers that compound performance.',
-    deliverables: [
-      'Test roadmap',
-      'Creative variants',
-      'Statistical readouts',
-      'Winner rollouts',
-    ],
+    category: 'Web',
+    title: 'Website development',
+    desc: 'Clean, fast sites built for clarity and conversions.',
+    deliverables: ['Responsive build', 'Basic SEO setup', 'Form integrations', 'Handoff docs'],
   },
   {
-    category: 'Optimization',
-    title: 'Dedicated optimization',
-    desc: 'Ongoing tuning of timing, copy, and channel mix based on live performance.',
-    deliverables: [
-      'Weekly performance review',
-      'Flow upgrades',
-      'Send-time refinement',
-      'Cross-channel scaling',
-    ],
+    category: 'Web',
+    title: 'Website maintenance',
+    desc: 'Updates, backups, and small content changes over time.',
+    deliverables: ['Monitoring', 'Security updates', 'Backups', 'Content edits'],
   },
   {
-    category: 'Strategy',
-    title: 'Reporting & consultation',
-    desc: 'Clear attribution and consultative guidance so you always know what to do next.',
-    deliverables: [
-      'Revenue reporting',
-      'Insight sessions',
-      'Priority roadmap',
-      'Growth recommendations',
-    ],
+    category: 'IT',
+    title: 'IT & deliverability',
+    desc: 'DNS auth, email platforms, and practical technical support.',
+    deliverables: ['SPF / DKIM / DMARC', 'Platform setup', 'Migration help', 'Support hours'],
   },
   {
-    category: 'Setup',
-    title: 'Deliverability & list health',
-    desc: 'Inbox placement, authentication, and list hygiene so your best work actually gets seen.',
-    deliverables: [
-      'SPF / DKIM / DMARC',
-      'List cleaning',
-      'Complaint monitoring',
-      'Sender reputation care',
-    ],
+    category: 'Automation',
+    title: 'Business automation',
+    desc: 'Connect tools so data moves without double entry.',
+    deliverables: ['Workflow mapping', 'Integrations', 'Notifications', 'Error checks'],
   },
 ];
 
-const categories = ['All', 'Setup', 'Campaigns', 'Optimization', 'Strategy'];
+const categories = ['All', 'Email', 'Web', 'IT', 'Automation'];
 
 export default function ServicesPage() {
   const { openQuote } = useQuote();
@@ -87,9 +56,7 @@ export default function ServicesPage() {
         const catOk = filter === 'All' || s.category === filter;
         const q = searchTerm.toLowerCase();
         const searchOk =
-          !q ||
-          s.title.toLowerCase().includes(q) ||
-          s.desc.toLowerCase().includes(q);
+          !q || s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q);
         return catOk && searchOk;
       }),
     [filter, searchTerm]
@@ -100,14 +67,12 @@ export default function ServicesPage() {
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">Services</span>
-          <h1>Retention systems that scale with you.</h1>
-          <p>
-            Full-funnel email & SMS—from framework setup to testing, optimization, and reporting.
-          </p>
+          <h1>Work we take on</h1>
+          <p>Email, web, IT, and automation—each with a clear deliverable list.</p>
         </div>
       </section>
 
-      <section className="section-tight">
+      <section className="section">
         <div className="container">
           <div className="filter-bar">
             {categories.map((cat) => (
@@ -121,33 +86,33 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          <div style={{ position: 'relative', maxWidth: 420, marginBottom: '2rem' }}>
+          <div style={{ position: 'relative', maxWidth: 380, marginBottom: '1.5rem' }}>
             <Search
               size={16}
               style={{
                 position: 'absolute',
-                left: '0.85rem',
+                left: '0.8rem',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                color: 'var(--dim)',
+                color: '#999',
               }}
             />
             <input
               className="form-input"
-              style={{ paddingLeft: '2.4rem' }}
-              placeholder="Search services…"
+              style={{ paddingLeft: '2.3rem' }}
+              placeholder="Search…"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
           <div className="services-grid">
-            {filtered.map((item, idx) => (
-              <Reveal key={item.title} as="article" className="panel-interactive" delay={(idx % 4) * 70}>
+            {filtered.map((item) => (
+              <article key={item.title} className="panel">
                 <span className="tag">{item.category}</span>
-                <h3 style={{ margin: '0.6rem 0 0.5rem' }}>{item.title}</h3>
-                <p style={{ marginBottom: '1rem' }}>{item.desc}</p>
-                <div style={{ display: 'grid', gap: '0.45rem', marginBottom: '1.1rem' }}>
+                <h3 style={{ margin: '0.5rem 0' }}>{item.title}</h3>
+                <p style={{ marginBottom: '0.9rem' }}>{item.desc}</p>
+                <div style={{ display: 'grid', gap: '0.4rem', marginBottom: '1rem' }}>
                   {item.deliverables.map((d) => (
                     <div className="check-row" key={d}>
                       <Check size={15} />
@@ -155,13 +120,16 @@ export default function ServicesPage() {
                     </div>
                   ))}
                 </div>
-                <button className="btn btn-primary btn-full btn-arrow" onClick={() => openQuote(item.title)}>
-                  Book a call
-                  <ArrowRight size={15} />
+                <button className="btn btn-primary btn-full" onClick={() => openQuote(item.title)}>
+                  Request quote
                 </button>
-              </Reveal>
+              </article>
             ))}
           </div>
+
+          {filtered.length === 0 && (
+            <p style={{ padding: '2rem 0', textAlign: 'center' }}>No matches. Try another filter.</p>
+          )}
         </div>
       </section>
     </>

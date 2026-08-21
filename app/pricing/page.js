@@ -1,52 +1,32 @@
 'use client';
 
-import { ArrowRight, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
-import Reveal from '@/components/Reveal';
-import MagneticButton from '@/components/MagneticButton';
 
 const packages = [
   {
-    tag: 'Launch',
-    title: 'Framework Setup',
-    desc: 'Core email & SMS flows, authentication, and creative foundations.',
+    tag: 'Starter',
+    title: 'Setup',
+    desc: 'Get the basics right—auth, platform, and one solid automation.',
     featured: false,
-    items: [
-      'Lifecycle flow build',
-      'SMS channel setup',
-      'Deliverability basics',
-      'Branded templates',
-      'Kickoff reporting',
-    ],
-    service: 'Framework Setup',
+    items: ['DNS authentication', 'Email platform setup', 'Welcome flow', 'One template'],
+    service: 'Starter Package',
   },
   {
     tag: 'Growth',
-    title: 'Retention Engine',
-    desc: 'Ongoing campaigns, testing, and optimization for brands ready to scale.',
+    title: 'Ongoing',
+    desc: 'Regular campaigns and upkeep for teams that send every month.',
     featured: true,
-    items: [
-      'Everything in Launch',
-      'Monthly campaign calendar',
-      'Continuous A/B testing',
-      'Dedicated optimization',
-      'Bi-weekly strategy calls',
-    ],
-    service: 'Retention Engine',
+    items: ['Everything in Setup', 'Monthly campaigns', 'Flow updates', 'Light site care'],
+    service: 'Growth Package',
   },
   {
-    tag: 'Scale',
-    title: 'Full Partnership',
-    desc: 'Senior retention partnership with deeper creative and consulting bandwidth.',
+    tag: 'Custom',
+    title: 'Partner',
+    desc: 'Broader support across IT, web, and automation.',
     featured: false,
-    items: [
-      'Everything in Growth',
-      'Advanced segmentation',
-      'Priority production',
-      'Custom reporting',
-      'Executive consults',
-    ],
-    service: 'Full Partnership',
+    items: ['Everything in Ongoing', 'Custom development', 'Priority support', 'Dedicated lead'],
+    service: 'Business Package',
   },
 ];
 
@@ -58,20 +38,16 @@ export default function PricingPage() {
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">Pricing</span>
-          <h1>Packages that match how retention actually works.</h1>
-          <p>Start with setup, grow into always-on optimization. Final scopes are confirmed on your call.</p>
+          <h1>Simple packages</h1>
+          <p>Starting points only. Every project gets a written quote first.</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="pricing-grid">
-            {packages.map((pkg, idx) => (
-              <Reveal
-                key={pkg.title}
-                className={`price-card ${pkg.featured ? 'featured' : ''}`}
-                delay={idx * 80}
-              >
+            {packages.map((pkg) => (
+              <div key={pkg.title} className={`price-card ${pkg.featured ? 'featured' : ''}`}>
                 <div>
                   <span className="tag">{pkg.tag}</span>
                   <h3>{pkg.title}</h3>
@@ -79,20 +55,19 @@ export default function PricingPage() {
                   <ul>
                     {pkg.items.map((line) => (
                       <li key={line}>
-                        <Check size={16} />
+                        <Check size={15} />
                         <span>{line}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-                <MagneticButton
-                  className={`btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'} btn-full btn-arrow`}
+                <button
+                  className={`btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'} btn-full`}
                   onClick={() => openQuote(pkg.service)}
                 >
-                  Book a call
-                  <ArrowRight size={15} />
-                </MagneticButton>
-              </Reveal>
+                  Get a quote
+                </button>
+              </div>
             ))}
           </div>
         </div>

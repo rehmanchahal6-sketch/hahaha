@@ -8,7 +8,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
     name: '',
     email: '',
     company: '',
-    service: initialService || 'Email Marketing Campaigns',
+    service: initialService || 'Email Marketing',
     budget: '$1,000 - $3,000 / mo',
     message: '',
   });
@@ -19,7 +19,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
     if (isOpen) {
       setFormData((prev) => ({
         ...prev,
-        service: initialService || prev.service || 'Email Marketing Campaigns',
+        service: initialService || prev.service || 'Email Marketing',
       }));
     }
   }, [isOpen, initialService]);
@@ -28,10 +28,10 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
 
   const validate = () => {
     const next = {};
-    if (!formData.name.trim()) next.name = 'Full name is required';
-    if (!formData.email.trim()) next.email = 'Business email is required';
+    if (!formData.name.trim()) next.name = 'Required';
+    if (!formData.email.trim()) next.email = 'Required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) next.email = 'Enter a valid email';
-    if (!formData.company.trim()) next.company = 'Company name is required';
+    if (!formData.company.trim()) next.company = 'Required';
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -44,18 +44,18 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
       setIsSubmitting(false);
       onClose();
       showToast({
-        title: 'Call request sent',
-        message: 'A Paudelon specialist will reach out to schedule your call.',
+        title: 'Request sent',
+        message: 'We’ll get back to you within one business day.',
       });
       setFormData({
         name: '',
         email: '',
         company: '',
-        service: 'Email Marketing Campaigns',
+        service: 'Email Marketing',
         budget: '$1,000 - $3,000 / mo',
         message: '',
       });
-    }, 700);
+    }, 600);
   };
 
   return (
@@ -65,16 +65,16 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
           <X size={18} />
         </button>
 
-        <p className="eyebrow">Book a call</p>
-        <h2 style={{ fontSize: '1.75rem', marginBottom: '0.35rem' }}>Let’s map your retention plan</h2>
-        <p style={{ marginBottom: '1.5rem', fontSize: '0.98rem' }}>
-          Share a few details and we’ll follow up to schedule your strategy call.
+        <span className="eyebrow">Quote</span>
+        <h2 style={{ fontSize: '1.5rem', marginBottom: '0.35rem' }}>Tell us what you need</h2>
+        <p style={{ marginBottom: '1.25rem', fontSize: '0.95rem' }}>
+          A few details are enough. We’ll follow up with a clear scope.
         </p>
 
         <form onSubmit={handleSubmit}>
           <div className="grid-2">
             <div className="form-group">
-              <label className="form-label">Your name *</label>
+              <label className="form-label">Name *</label>
               <input
                 className="form-input"
                 value={formData.name}
@@ -83,7 +83,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
               {errors.name && <span className="form-error-msg">{errors.name}</span>}
             </div>
             <div className="form-group">
-              <label className="form-label">Business email *</label>
+              <label className="form-label">Email *</label>
               <input
                 type="email"
                 className="form-input"
@@ -111,13 +111,9 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
                 value={formData.service}
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
               >
-                <option>Email Marketing Campaigns</option>
+                <option>Email Marketing</option>
                 <option>Email Automation</option>
-                <option>Lead Nurturing</option>
-                <option>CRM & Email Platform Setup</option>
                 <option>Website Development</option>
-                <option>Website Maintenance</option>
-                <option>Business Automation</option>
                 <option>IT Consulting & Support</option>
                 <option>Starter Package</option>
                 <option>Growth Package</option>
@@ -127,7 +123,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
           </div>
 
           <div className="form-group">
-            <label className="form-label">Budget range</label>
+            <label className="form-label">Budget</label>
             <select
               className="form-select"
               value={formData.budget}
@@ -141,22 +137,22 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
           </div>
 
           <div className="form-group">
-            <label className="form-label">Notes (optional)</label>
+            <label className="form-label">Notes</label>
             <textarea
               className="form-textarea"
               rows={3}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Current tools, goals, or constraints..."
+              placeholder="Optional context…"
             />
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.65rem' }}>
             <button type="button" className="btn btn-secondary" onClick={onClose}>
               Cancel
             </button>
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending…' : 'Book my call'}
+              {isSubmitting ? 'Sending…' : 'Send request'}
               <Send size={15} />
             </button>
           </div>

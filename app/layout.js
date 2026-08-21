@@ -2,8 +2,6 @@ import { Bricolage_Grotesque, Source_Serif_4 } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { QuoteProvider } from '@/components/QuoteProvider';
-import PageTransition from '@/components/PageTransition';
-import ScrollProgress from '@/components/ScrollProgress';
 import './globals.css';
 
 const display = Bricolage_Grotesque({
@@ -19,9 +17,9 @@ const body = Source_Serif_4({
 });
 
 export const metadata = {
-  title: 'Paudelon | Retention Expertise — Email & SMS',
+  title: 'Paudelon | Technology, Email & Web',
   description:
-    'Paudelon is the retention partner for DTC brands. Email & SMS frameworks, campaigns, testing, and optimization that scale repeat revenue.',
+    'Paudelon helps businesses with IT support, email marketing, automation, and web solutions.',
 };
 
 export default function RootLayout({ children }) {
@@ -29,12 +27,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
         <QuoteProvider>
-          <ScrollProgress />
           <div className="site-shell">
             <Header />
-            <main className="site-main">
-              <PageTransition>{children}</PageTransition>
-            </main>
+            <main className="site-main">{children}</main>
             <Footer />
           </div>
         </QuoteProvider>
