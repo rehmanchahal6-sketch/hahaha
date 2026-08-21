@@ -3,7 +3,7 @@
   --surface: #ffffff;
   --ink: #111111;
   --muted: #555555;
-  --line: #e6e6e6;
+  --line: #c2c2c2;
   --accent: #111111;
   --accent-soft: #f0f0f0;
   --danger: #b00020;
@@ -355,6 +355,58 @@ p {
   color: var(--muted);
 }
 
+.process-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .process-layout {
+    grid-template-columns: minmax(220px, 0.85fr) 1.35fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .process-intro {
+    margin-bottom: 0;
+    position: sticky;
+    top: calc(var(--nav-h) + 1.5rem);
+  }
+}
+
+.process-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.process-item {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.process-index {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  padding-top: 0.2rem;
+}
+
+.process-body h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.35rem;
+}
+
+.process-body p {
+  max-width: 42ch;
+}
+
 .feature-grid {
   display: grid;
   gap: 1.5rem;
@@ -372,7 +424,7 @@ p {
 
 .testimonials {
   display: grid;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 @media (min-width: 800px) {
@@ -382,21 +434,11 @@ p {
 }
 
 .testimonial {
-  padding: 1.35rem 0;
-  border-top: 1px solid var(--line);
-}
-
-@media (min-width: 800px) {
-  .testimonial {
-    padding: 0 0 0 1.25rem;
-    border-top: none;
-    border-left: 1px solid var(--line);
-  }
-
-  .testimonial:first-child {
-    padding-left: 0;
-    border-left: none;
-  }
+  margin: 0;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
 }
 
 .testimonial blockquote {
@@ -404,15 +446,25 @@ p {
   font-size: 1.05rem;
   line-height: 1.55;
   color: var(--ink);
-  margin-bottom: 0.85rem;
+  margin: 0 0 1rem;
 }
 
 .testimonial cite {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
+  display: grid;
+  gap: 0.15rem;
   font-style: normal;
-  font-weight: 600;
+}
+
+.testimonial cite strong {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.testimonial cite span {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
   color: var(--muted);
 }
 
