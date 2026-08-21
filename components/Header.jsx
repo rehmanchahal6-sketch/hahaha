@@ -47,7 +47,7 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <button className="btn btn-primary btn-sm" onClick={() => openQuote()}>
+          <button className="btn btn-primary btn-sm nav-cta" onClick={() => openQuote()}>
             Get a quote
           </button>
           <button

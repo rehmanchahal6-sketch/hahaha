@@ -16,6 +16,31 @@ const faqItems = [
     a: 'Small and mid-size businesses that need reliable help without a large in-house team.',
   },
   {
+    category: 'Platforms',
+    q: 'Which platforms do you specialize in?',
+    a: 'Email: Klaviyo, Mailchimp, ActiveCampaign, HubSpot, and ConvertKit. Web: WordPress, Shopify, and custom React/Next.js sites. We also work with Google Workspace and Microsoft 365.',
+  },
+  {
+    category: 'Platforms',
+    q: 'Can you work with our existing tools?',
+    a: 'Yes. We usually start with what you already use and only recommend a switch when it clearly solves a problem.',
+  },
+  {
+    category: 'Security',
+    q: 'How do you handle our data?',
+    a: 'We only use access required for the contracted work. We do not sell, rent, or share your contact lists or customer data with third parties for marketing.',
+  },
+  {
+    category: 'Security',
+    q: 'What about account security and credentials?',
+    a: 'Prefer least-privilege access, shared password managers when possible, and we document changes. You can revoke access when a project or retainer ends.',
+  },
+  {
+    category: 'Security',
+    q: 'Do you help with email authentication and deliverability?',
+    a: 'Yes. SPF, DKIM, and DMARC setup is a common starting point, along with list hygiene and sender reputation checks.',
+  },
+  {
     category: 'Process',
     q: 'How long do projects take?',
     a: 'Most email and setup work takes 1–2 weeks. Custom websites usually take 2–4 weeks depending on scope.',
@@ -30,9 +55,14 @@ const faqItems = [
     q: 'Do you offer ongoing help?',
     a: 'Yes. We can retain for campaigns, maintenance, and technical support after the initial build.',
   },
+  {
+    category: 'Support',
+    q: 'What happens after launch?',
+    a: 'You get a clear handoff of what was built. Optional retainers cover monitoring, updates, and iteration.',
+  },
 ];
 
-const categories = ['All', 'General', 'Process', 'Support'];
+const categories = ['All', 'General', 'Platforms', 'Security', 'Process', 'Support'];
 
 export default function FAQPage() {
   const { openQuote } = useQuote();
@@ -58,7 +88,7 @@ export default function FAQPage() {
         <div className="container">
           <span className="eyebrow">FAQ</span>
           <h1>Questions</h1>
-          <p>Short answers about services, timing, and how we work.</p>
+          <p>Answers about platforms, security, data handling, timing, and how we work.</p>
           <div style={{ position: 'relative', maxWidth: 420, marginTop: '1.25rem' }}>
             <Search
               size={16}
@@ -118,6 +148,10 @@ export default function FAQPage() {
               </div>
             ))}
           </div>
+
+          {filtered.length === 0 && (
+            <p style={{ padding: '2rem 0', textAlign: 'center' }}>No matching questions.</p>
+          )}
 
           <div className="cta-band" style={{ marginTop: '2.5rem' }}>
             <div>

@@ -47,6 +47,24 @@ const steps = [
   },
 ];
 
+const testimonials = [
+  {
+    quote:
+      'Paudelon cleaned up our email authentication and rebuilt the welcome flow. Deliverability improved within the first month.',
+    name: 'Operations lead, regional retailer',
+  },
+  {
+    quote:
+      'Clear scope, no surprise fees, and the site they shipped is easy for our team to update.',
+    name: 'Founder, professional services firm',
+  },
+  {
+    quote:
+      'We finally have automations that match how we sell—without juggling three different vendors.',
+    name: 'Marketing manager, B2B SaaS',
+  },
+];
+
 const packages = [
   {
     tag: 'Starter',
@@ -80,12 +98,24 @@ const faqs = [
     a: 'We help with email marketing, automation, websites, and practical IT support for small and mid-size businesses.',
   },
   {
+    q: 'Which platforms do you work with?',
+    a: 'Common email tools like Klaviyo, Mailchimp, ActiveCampaign, and HubSpot, plus websites on WordPress, Shopify, or custom React/Next.js stacks.',
+  },
+  {
+    q: 'How do you handle our data and access?',
+    a: 'We only request the access needed for the job, use it for contracted work, and do not sell or share your customer lists. Credentials are handled carefully and can be revoked when the project ends.',
+  },
+  {
+    q: 'What about security and email deliverability?',
+    a: 'We set up SPF, DKIM, and DMARC where needed, follow secure practices on websites we maintain, and document what was changed so you stay in control.',
+  },
+  {
     q: 'How do projects usually start?',
     a: 'You request a quote, we ask a few questions, then send a clear scope and price before work begins.',
   },
   {
     q: 'Can you work with tools we already use?',
-    a: 'Yes. We work with common email platforms and web stacks, and we can extend what you already have.',
+    a: 'Yes. We prefer to improve what you already have unless a replacement is clearly better for your goals.',
   },
 ];
 
@@ -168,6 +198,24 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
+            <span className="eyebrow">Clients</span>
+            <h2>What clients are saying</h2>
+            <p>A few notes from recent work. More case studies coming as we grow.</p>
+          </div>
+          <div className="testimonials">
+            {testimonials.map((item) => (
+              <figure className="testimonial" key={item.name}>
+                <blockquote>“{item.quote}”</blockquote>
+                <cite>{item.name}</cite>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-head">
             <span className="eyebrow">Pricing</span>
             <h2>Clear starting points</h2>
             <p>Final quotes are itemized after a short discovery chat.</p>
@@ -200,7 +248,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-alt">
+      <section className="section">
         <div className="container" style={{ maxWidth: 720 }}>
           <div className="section-head">
             <span className="eyebrow">FAQ</span>
@@ -234,7 +282,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-alt">
         <div className="container">
           <div className="cta-band">
             <div>

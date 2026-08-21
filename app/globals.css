@@ -370,6 +370,56 @@ p {
   margin-bottom: 0.4rem;
 }
 
+.testimonials {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 800px) {
+  .testimonials {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.testimonial {
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 800px) {
+  .testimonial {
+    padding: 0 0 0 1.25rem;
+    border-top: none;
+    border-left: 1px solid var(--line);
+  }
+
+  .testimonial:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
+.testimonial blockquote {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+}
+
+.testimonial cite {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.nav-cta {
+  display: inline-flex;
+}
+
 .page-hero {
   padding: 3.5rem 0 2rem;
   border-bottom: 1px solid var(--line);
