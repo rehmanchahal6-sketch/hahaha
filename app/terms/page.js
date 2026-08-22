@@ -84,7 +84,9 @@ export default function TermsPage() {
         <br />
         Website: <a href={company.website}>{company.websiteDisplay}</a>
         <br />
-        Email: <a href={`mailto:${company.email}`}>{company.email}</a>
+        Contact: <a href={`mailto:${company.email}`}>{company.email}</a>
+        {' or '}
+        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
       </p>
     </PolicyShell>
   );

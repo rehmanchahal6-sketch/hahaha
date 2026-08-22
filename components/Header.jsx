@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { useQuote } from '@/components/QuoteProvider';
 
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/products', label: 'Products' },
   { href: '/about', label: 'About Us' },
+  { href: '/company', label: 'Company' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -20,7 +20,6 @@ function isActive(pathname, href) {
 
 export default function Header() {
   const pathname = usePathname();
-  const { openQuote } = useQuote();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {

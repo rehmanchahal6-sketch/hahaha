@@ -80,7 +80,8 @@ export default function ShippingPage() {
       <p>
         Wholesale and bulk shipments follow delivery terms agreed in writing at the time of
         purchase, including lead times, freight method, and shipping costs. Contact{' '}
-        <a href={`mailto:${company.email}`}>{company.email}</a> for wholesale shipping quotes.
+        <a href={`mailto:${company.email}`}>{company.email}</a> or{' '}
+        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a> for wholesale shipping quotes.
       </p>
 
       <h3>9. Incorrect or incomplete addresses</h3>
@@ -100,6 +101,8 @@ export default function ShippingPage() {
       <h3>11. Contact</h3>
       <p>
         Shipping questions: <a href={`mailto:${company.email}`}>{company.email}</a>
+        {' or '}
+        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
         <br />
         {company.legalName} · {addressBlock}
         <br />

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { company, addressBlock } from '@/lib/company';
+import { company, addressBlock, policyLinks } from '@/lib/company';
 
 export default function Footer() {
   return (
@@ -19,7 +19,12 @@ export default function Footer() {
                 {company.websiteDisplay}
               </a>
               <a href={`mailto:${company.email}`}>{company.email}</a>
+              <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
+              {company.phone && company.phoneDisplay ? (
+                <a href={`tel:${company.phone}`}>{company.phoneDisplay}</a>
+              ) : null}
               <address>
+                <span className="footer-address-label">Registered office</span>
                 {company.address.line1}
                 <br />
                 {company.address.city}, {company.address.state} {company.address.zip}
@@ -45,9 +50,9 @@ export default function Footer() {
               <h5>Company</h5>
               <ul className="footer-links">
                 <li><Link href="/about">About Us</Link></li>
+                <li><Link href="/company">Corporate information</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
                 <li><Link href="/faq">FAQ</Link></li>
-                <li><Link href="/services">How we sell</Link></li>
               </ul>
             </div>
 
@@ -63,8 +68,11 @@ export default function Footer() {
             <div>
               <h5>Legal</h5>
               <ul className="footer-links">
-                <li><Link href="/privacy">Privacy Policy</Link></li>
-                <li><Link href="/terms">Terms of Service</Link></li>
+                {policyLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href}>{link.label}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -76,12 +84,20 @@ export default function Footer() {
             <span>{company.legalName}</span>
           </div>
           <div className="footer-fact">
+            <span className="footer-fact-label">Managing member</span>
+            <span>{company.managingMember}</span>
+          </div>
+          <div className="footer-fact">
             <span className="footer-fact-label">Website</span>
             <span>{company.websiteDisplay}</span>
           </div>
           <div className="footer-fact">
             <span className="footer-fact-label">Jurisdiction</span>
             <span>{company.stateOfFormation}, USA</span>
+          </div>
+          <div className="footer-fact">
+            <span className="footer-fact-label">Industry / NAICS</span>
+            <span>{company.naics}</span>
           </div>
           <div className="footer-fact">
             <span className="footer-fact-label">Registered office</span>
@@ -95,10 +111,12 @@ export default function Footer() {
         </div>
 
         <p className="footer-disclaimer">
-          {company.legalName} is a {company.entityType}. The registered address above is the
-          company&apos;s official mailing address in {company.stateOfFormation}. For business
-          verification inquiries, contact{' '}
-          <a href={`mailto:${company.email}`}>{company.email}</a>.
+          {company.legalName} is a {company.entityType}. {company.addressPurpose} Contact:{' '}
+          <a href={`mailto:${company.email}`}>{company.email}</a>
+          {' · '}
+          <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>.
+          {' '}
+          <Link href="/company">Corporate information</Link>.
         </p>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import { Bricolage_Grotesque, Source_Serif_4 } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ComplianceBar from '@/components/ComplianceBar';
 import { QuoteProvider } from '@/components/QuoteProvider';
 import { company } from '@/lib/company';
 import './globals.css';
@@ -44,9 +45,25 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: company.legalName,
+  alternateName: company.tradeName,
   url: company.website,
-  email: company.email,
+  email: [company.email, company.supportEmail],
   description: `${company.businessActivity} Product focus: ${company.productFocus}.`,
+  founder: {
+    '@type': 'Person',
+    name: company.managingMember,
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email: company.email,
+    availableLanguage: 'English',
+    areaServed: company.country,
+    hoursAvailable: company.hours,
+    ...(company.phone
+      ? { telephone: company.phone }
+      : {}),
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: company.address.line1,
@@ -71,6 +88,7 @@ export default function RootLayout({ children }) {
       <body>
         <QuoteProvider>
           <div className="site-shell">
+            <ComplianceBar />
             <Header />
             <main className="site-main">{children}</main>
             <Footer />

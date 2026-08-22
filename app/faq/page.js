@@ -80,12 +80,12 @@ export default function FAQPage() {
           )}
 
           <div className="trust-panel" style={{ marginTop: '2.5rem' }}>
-            <h3>Business verification</h3>
+            <h3>Corporate information</h3>
             <p>
-              For banking, vendor, or partnership verification, email{' '}
-              <a href={`mailto:${company.email}`}>{company.email}</a> with your organization name
-              and request details. Official company information is also published on our{' '}
-              <Link href="/about">About</Link> and <Link href="/contact">Contact</Link> pages.
+              Official company details are published on our{' '}
+              <Link href="/company">Corporate Information</Link> page. For inquiries, email{' '}
+              <a href={`mailto:${company.email}`}>{company.email}</a> or{' '}
+              <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>.
             </p>
           </div>
 

@@ -207,7 +207,7 @@ export default function HomePage() {
           <div className="section-head">
             <span className="eyebrow">Company</span>
             <h2>Official business information</h2>
-            <p>Registered details for {company.legalName}, published for customers and business verification.</p>
+            <p>Registered details for {company.legalName}. For the full corporate disclosure, visit our <Link href="/company" className="text-link">Corporate Information</Link> page.</p>
           </div>
           <CompanyDetails title="" />
         </div>

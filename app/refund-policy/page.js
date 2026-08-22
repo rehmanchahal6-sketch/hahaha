@@ -58,7 +58,8 @@ export default function RefundPage() {
 
       <h3>8. How to request a return or refund</h3>
       <p>
-        Email <a href={`mailto:${company.email}`}>{company.email}</a> with:
+        Email <a href={`mailto:${company.email}`}>{company.email}</a> or{' '}
+        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a> with:
       </p>
       <ul>
         <li>Your order number</li>
@@ -74,6 +75,8 @@ export default function RefundPage() {
         {addressBlock}
         <br />
         <a href={`mailto:${company.email}`}>{company.email}</a>
+        {' · '}
+        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
       </p>
     </PolicyShell>
   );

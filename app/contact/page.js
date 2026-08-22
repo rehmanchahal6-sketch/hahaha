@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { CheckCircle2, Send } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
 import CompanyDetails from '@/components/CompanyDetails';
@@ -69,8 +70,7 @@ export default function ContactPage() {
           <span className="eyebrow">Contact</span>
           <h1>Get in touch</h1>
           <p>
-            Order support, wholesale inquiries, and business verification contact for{' '}
-            {company.legalName}.
+            Order support, wholesale inquiries, and company contact for {company.legalName}.
           </p>
         </div>
       </section>
@@ -81,11 +81,25 @@ export default function ContactPage() {
             <div>
               <CompanyDetails title="Registered company details" />
               <div className="trust-panel" style={{ marginTop: '1rem' }}>
-                <h3>Verification requests</h3>
+                <h3>Direct contact</h3>
+                <p style={{ marginBottom: '0.5rem' }}>
+                  <strong>Business:</strong>{' '}
+                  <a href={`mailto:${company.email}`}>{company.email}</a>
+                </p>
+                <p style={{ marginBottom: '0.5rem' }}>
+                  <strong>Support:</strong>{' '}
+                  <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
+                </p>
+                {company.phone && company.phoneDisplay ? (
+                  <p style={{ marginBottom: '0.5rem' }}>
+                    <strong>Phone:</strong>{' '}
+                    <a href={`tel:${company.phone}`}>{company.phoneDisplay}</a>
+                  </p>
+                ) : null}
                 <p style={{ marginBottom: 0 }}>
-                  Banks and business partners may contact us at{' '}
-                  <a href={`mailto:${company.email}`}>{company.email}</a> for company verification.
-                  Include your organization name and the purpose of your request.
+                  <Link href="/company" className="text-link">
+                    View corporate information →
+                  </Link>
                 </p>
               </div>
             </div>
