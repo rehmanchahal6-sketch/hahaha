@@ -829,36 +829,70 @@ p {
 
 .footer {
   margin-top: auto;
-  padding: 2rem 0 1.25rem;
+  padding: 3rem 0 1.5rem;
   border-top: 1px solid var(--line);
-  background: var(--surface);
+  background: var(--bg);
 }
 
 .footer-main {
   display: grid;
-  gap: 2rem;
-  margin-bottom: 1.25rem;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 900px) {
   .footer-main {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 2.5rem;
+    grid-template-columns: minmax(240px, 1fr) minmax(0, 1.4fr);
+    gap: 3rem;
     align-items: start;
   }
 }
 
 .footer-brand .brand {
   display: inline-block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
+  font-size: 1.35rem;
 }
 
 .footer-tagline {
-  max-width: 36ch;
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
+  max-width: 32ch;
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+}
+
+.footer-emails {
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.footer-emails li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.footer-email-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.footer-emails a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  width: fit-content;
+  transition: color 0.15s ease;
+}
+
+.footer-emails a:hover {
+  color: var(--primary);
 }
 
 .footer-contact {
@@ -878,13 +912,25 @@ p {
 }
 
 .footer-website {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  color: var(--ink);
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.footer-website:hover {
+  color: var(--primary);
 }
 
 .footer-nav-compact {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .footer-nav-compact {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .footer-grid {
@@ -937,6 +983,11 @@ p {
   font-size: 0.82rem;
   line-height: 1.55;
   color: var(--muted);
+}
+
+/* Footer-specific: no boxed disclaimer — full text lives on /company */
+.footer .operational-disclaimer {
+  display: none;
 }
 
 .company-details-title {
@@ -1034,15 +1085,39 @@ p {
 }
 
 .footer-bottom {
+  display: grid;
+  gap: 0.65rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer-bottom-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 0.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line);
+  align-items: center;
+  gap: 0.75rem 1rem;
   color: var(--muted);
   font-size: 0.85rem;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
+}
+
+.footer-bottom-link {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+
+.footer-bottom-link:hover {
+  color: var(--primary);
+}
+
+.footer-bottom-note {
+  margin: 0;
+  max-width: 72ch;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--muted);
 }
 
 .footer-nav-grid {

@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import { company, policyLinks } from '@/lib/company';
-import OperationalDisclaimer from '@/components/OperationalDisclaimer';
-import LegalEntityMeta from '@/components/LegalEntityMeta';
 
 export default function Footer() {
   return (
@@ -13,29 +11,21 @@ export default function Footer() {
               Paudelon
             </Link>
             <p className="footer-tagline">
-              Pet products sold online through Shopify, Amazon, and wholesale.
+              Premium pet essentials — sold online through Shopify, Amazon, and wholesale.
             </p>
-            <div className="footer-contact">
-              <a href={company.website} className="footer-website">
-                {company.websiteDisplay}
-              </a>
-              <span aria-hidden>·</span>
-              <a href={`mailto:${company.email}`}>{company.email}</a>
-              <span aria-hidden>·</span>
-              <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
-              {company.phone && company.phoneDisplay ? (
-                <>
-                  <span aria-hidden>·</span>
-                  <a href={`tel:${company.phone}`}>{company.phoneDisplay}</a>
-                </>
-              ) : null}
-            </div>
-            <LegalEntityMeta className="footer-meta" />
-            <OperationalDisclaimer className="footer-disclaimer" />
-            <p className="footer-meta">
-              Registered office: {company.address.city}, {company.address.state} ·{' '}
-              <Link href="/company">Corporate information</Link>
-            </p>
+            <ul className="footer-emails">
+              <li>
+                <span className="footer-email-label">Contact</span>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </li>
+              <li>
+                <span className="footer-email-label">Support</span>
+                <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
+              </li>
+            </ul>
+            <a href={company.website} className="footer-website">
+              {company.websiteDisplay}
+            </a>
           </div>
 
           <div className="footer-nav-grid footer-nav-compact">
@@ -71,9 +61,19 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>
-            © {new Date().getFullYear()} {company.legalName}. {company.jurisdiction}.
-          </span>
+          <div className="footer-bottom-row">
+            <span>
+              © {new Date().getFullYear()} {company.legalName}. {company.jurisdiction}.
+            </span>
+            <Link href="/company" className="footer-bottom-link">
+              Corporate information
+            </Link>
+          </div>
+          <p className="footer-bottom-note">
+            NAICS {company.naics} · Registered office: {company.address.city},{' '}
+            {company.address.state} · Digital-first e-commerce — no walk-in retail at the
+            registered address.
+          </p>
         </div>
       </div>
     </footer>
