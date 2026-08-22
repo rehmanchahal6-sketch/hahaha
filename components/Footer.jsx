@@ -22,6 +22,10 @@ export default function Footer() {
                 <span className="footer-email-label">Support</span>
                 <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
               </li>
+              <li>
+                <span className="footer-email-label">Phone</span>
+                <a href={`tel:${company.phone}`}>{company.phoneDisplay}</a>
+              </li>
             </ul>
             <a href={company.website} className="footer-website">
               {company.websiteDisplay}
