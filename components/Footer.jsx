@@ -33,7 +33,7 @@ export default function Footer() {
               <h5>Shop</h5>
               <ul className="footer-links">
                 <li><Link href="/products">All products</Link></li>
-                <li><Link href="/products">Browse catalog</Link></li>
+                <li><Link href="/contact">Wholesale inquiry</Link></li>
               </ul>
             </div>
 

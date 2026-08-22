@@ -11,20 +11,22 @@ export default function ProductsPage() {
   const [filter, setFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filtered = useMemo(
-    () =>
-      products.filter((p) => {
-        const catOk = filter === 'All' || p.category === filter;
-        const q = searchTerm.toLowerCase();
-        const searchOk =
-          !q ||
-          p.name.toLowerCase().includes(q) ||
-          p.shortDesc.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q);
-        return catOk && searchOk;
-      }),
-    [filter, searchTerm]
-  );
+  const filtered = useMemo(() => {
+    const seen = new Set();
+    return products.filter((p) => {
+      if (seen.has(p.slug)) return false;
+      seen.add(p.slug);
+
+      const catOk = filter === 'All' || p.category === filter;
+      const q = searchTerm.toLowerCase();
+      const searchOk =
+        !q ||
+        p.name.toLowerCase().includes(q) ||
+        p.shortDesc.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q);
+      return catOk && searchOk;
+    });
+  }, [filter, searchTerm]);
 
   return (
     <>
