@@ -47,7 +47,7 @@ const organizationSchema = {
   name: company.legalName,
   alternateName: company.tradeName,
   url: company.website,
-  email: [company.email, company.supportEmail],
+  email: company.email,
   description: `${company.businessActivity} Product focus: ${company.productFocus}.`,
   founder: {
     '@type': 'Person',

@@ -17,9 +17,7 @@ export default function PrivacyPage() {
       </p>
       <p>
         <strong>Data controller:</strong> {company.legalName}, {addressBlock}. Contact:{' '}
-        <a href={`mailto:${company.email}`}>{company.email}</a>
-        {' · '}
-        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>.
+        <a href={`mailto:${company.email}`}>{company.email}</a>.
       </p>
 
       <h3>2. Information we collect</h3>
@@ -83,9 +81,7 @@ export default function PrivacyPage() {
       <p>
         Depending on your location, you may have the right to access, correct, delete, or restrict
         use of your personal data. To exercise these rights, contact{' '}
-        <a href={`mailto:${company.email}`}>{company.email}</a>
-        {' · '}
-        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>.
+        <a href={`mailto:${company.email}`}>{company.email}</a>.
       </p>
 
       <h3>7. Security</h3>
@@ -113,8 +109,6 @@ export default function PrivacyPage() {
         {addressBlock}
         <br />
         <a href={`mailto:${company.email}`}>{company.email}</a>
-        {' · '}
-        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
       </p>
     </PolicyShell>
   );

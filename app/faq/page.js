@@ -84,8 +84,7 @@ export default function FAQPage() {
             <p>
               Official company details are published on our{' '}
               <Link href="/company">Corporate Information</Link> page. For inquiries, email{' '}
-              <a href={`mailto:${company.email}`}>{company.email}</a> or{' '}
-              <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>.
+              <a href={`mailto:${company.email}`}>{company.email}</a>.
             </p>
           </div>
 

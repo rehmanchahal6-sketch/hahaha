@@ -19,7 +19,6 @@ export default function Footer() {
                 {company.websiteDisplay}
               </a>
               <a href={`mailto:${company.email}`}>{company.email}</a>
-              <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
               {company.phone && company.phoneDisplay ? (
                 <a href={`tel:${company.phone}`}>{company.phoneDisplay}</a>
               ) : null}
@@ -112,9 +111,7 @@ export default function Footer() {
 
         <p className="footer-disclaimer">
           {company.legalName} is a {company.entityType}. {company.addressPurpose} Contact:{' '}
-          <a href={`mailto:${company.email}`}>{company.email}</a>
-          {' · '}
-          <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>.
+          <a href={`mailto:${company.email}`}>{company.email}</a>.
           {' '}
           <Link href="/company">Corporate information</Link>.
         </p>

@@ -12,8 +12,6 @@ export default function PolicyShell({ eyebrow, title, updated, children }) {
           <p className="policy-meta">
             {company.legalName} · {company.websiteDisplay} ·{' '}
             <a href={`mailto:${company.email}`}>{company.email}</a>
-            {' · '}
-            <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
           </p>
         </div>
       </section>

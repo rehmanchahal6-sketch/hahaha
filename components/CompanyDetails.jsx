@@ -5,14 +5,9 @@ const extraRows = [
   { label: 'Trade name', value: company.tradeName },
   { label: 'Managing member', value: company.managingMember },
   {
-    label: 'Business email',
+    label: 'Email',
     value: company.email,
     href: `mailto:${company.email}`,
-  },
-  {
-    label: 'Support email',
-    value: company.supportEmail,
-    href: `mailto:${company.supportEmail}`,
   },
 ];
 
