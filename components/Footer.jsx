@@ -28,9 +28,7 @@ export default function Footer() {
                 </>
               ) : null}
             </div>
-            <p className="footer-meta">
-              <LegalEntityMeta />
-            </p>
+            <LegalEntityMeta className="footer-meta" />
             <OperationalDisclaimer className="footer-disclaimer" />
             <p className="footer-meta">
               Registered office: {company.address.city}, {company.address.state} ·{' '}
