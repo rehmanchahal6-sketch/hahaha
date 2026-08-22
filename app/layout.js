@@ -17,9 +17,9 @@ const body = Source_Serif_4({
 });
 
 export const metadata = {
-  title: 'Paudelon | Technology, Email & Web',
+  title: 'Paudelon LLC | Pet Products E-Commerce',
   description:
-    'Paudelon helps businesses with IT support, email marketing, automation, and web solutions.',
+    'Paudelon LLC is a Wyoming e-commerce company selling pet products through online retail, wholesale, and dropshipping on Shopify and Amazon.',
 };
 
 export default function RootLayout({ children }) {

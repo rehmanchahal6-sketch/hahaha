@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useQuote } from '@/components/QuoteProvider';
 
 export default function AboutPage() {
@@ -10,39 +11,69 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">About</span>
-          <h1>A small team focused on useful work.</h1>
+          <h1>Paudelon LLC</h1>
           <p>
-            Paudelon helps businesses with email, websites, and IT—without the agency noise. We keep scopes clear and communication direct.
+            A Wyoming limited liability company engaged in e-commerce and the online sale of pet
+            products.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container" style={{ maxWidth: 680 }}>
-          <h2 style={{ marginBottom: '1rem' }}>Why we exist</h2>
+          <h2 style={{ marginBottom: '1rem' }}>Company overview</h2>
           <p style={{ marginBottom: '1rem' }}>
-            Most teams don’t need more tools. They need someone who can connect what they already have, fix what’s broken, and leave things simpler than they found them.
+            Paudelon LLC operates as an e-commerce business selling pet products through online
+            retail, wholesale, and dropshipping channels. Our primary sales platforms include
+            Shopify and Amazon.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            The company engages in e-commerce, online retail, wholesale, dropshipping, and other
+            lawful business activities related to the pet supplies market.
           </p>
           <p>
-            That’s the bar we work to—whether it’s deliverability, an automation, or a new site.
+            We focus on practical, quality products for pet owners—sourced responsibly, listed
+            clearly, and fulfilled reliably.
           </p>
         </div>
       </section>
 
       <section className="section section-alt">
         <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Details</span>
+            <h2>Business information</h2>
+          </div>
           <div className="feature-grid">
             <div>
-              <h3>Clear scopes</h3>
-              <p>You know what’s included before work starts.</p>
+              <h3>Legal name</h3>
+              <p>Paudelon LLC</p>
             </div>
             <div>
-              <h3>Practical builds</h3>
-              <p>We prioritize systems you’ll actually use day to day.</p>
+              <h3>Entity type</h3>
+              <p>Wyoming limited liability company</p>
             </div>
             <div>
-              <h3>Direct contact</h3>
-              <p>Questions go to people who know your project.</p>
+              <h3>Industry</h3>
+              <p>E-commerce · Online retail · Pet products</p>
+            </div>
+            <div>
+              <h3>Sales channels</h3>
+              <p>Shopify, Amazon, wholesale & dropshipping</p>
+            </div>
+            <div>
+              <h3>Registered address</h3>
+              <p>
+                30 N Gould St Ste R
+                <br />
+                Sheridan, WY 82801
+              </p>
+            </div>
+            <div>
+              <h3>Contact</h3>
+              <p>
+                <a href="mailto:sujanpaudel368@gmail.com">sujanpaudel368@gmail.com</a>
+              </p>
             </div>
           </div>
         </div>
@@ -50,14 +81,38 @@ export default function AboutPage() {
 
       <section className="section">
         <div className="container">
+          <div className="feature-grid">
+            <div>
+              <h3>Online retail</h3>
+              <p>Pet products sold directly to consumers through our e-commerce storefronts.</p>
+            </div>
+            <div>
+              <h3>Marketplace sales</h3>
+              <p>Curated listings on Amazon and other approved online marketplaces.</p>
+            </div>
+            <div>
+              <h3>Wholesale supply</h3>
+              <p>Bulk orders for retailers and pet businesses that need consistent inventory.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt">
+        <div className="container">
           <div className="cta-band">
             <div>
-              <h2>Want to work together?</h2>
-              <p>Send a short note and we’ll take it from there.</p>
+              <h2>Questions about our business?</h2>
+              <p>Contact us for wholesale pricing, order support, or general inquiries.</p>
             </div>
-            <button className="btn btn-primary" onClick={() => openQuote()}>
-              Get a quote
-            </button>
+            <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="btn btn-secondary">
+                Contact
+              </Link>
+              <button className="btn btn-primary" onClick={() => openQuote('General Inquiry')}>
+                Send inquiry
+              </button>
+            </div>
           </div>
         </div>
       </section>

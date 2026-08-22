@@ -7,10 +7,11 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <Link href="/" className="brand" style={{ display: 'inline-block', marginBottom: '0.75rem' }}>
-              Paudelon
+              Paudelon LLC
             </Link>
-            <p style={{ maxWidth: '30ch', marginBottom: '1rem' }}>
-              Practical technology, email, and web work for growing businesses.
+            <p style={{ maxWidth: '36ch', marginBottom: '1rem' }}>
+              E-commerce company selling pet products through online retail, wholesale, and
+              dropshipping on Shopify and Amazon.
             </p>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>
               <a href="mailto:sujanpaudel368@gmail.com">sujanpaudel368@gmail.com</a>
@@ -18,16 +19,20 @@ export default function Footer() {
               30 N Gould St Ste R
               <br />
               Sheridan, WY 82801
+              <br />
+              <span style={{ color: 'var(--muted)', fontSize: '0.85rem' }}>
+                Wyoming limited liability company
+              </span>
             </p>
           </div>
 
           <div>
-            <h5>Services</h5>
+            <h5>Business</h5>
             <ul className="footer-links">
-              <li><Link href="/services">Email marketing</Link></li>
-              <li><Link href="/services">Automation</Link></li>
-              <li><Link href="/services">Web development</Link></li>
-              <li><Link href="/services">IT support</Link></li>
+              <li><Link href="/services">What we sell</Link></li>
+              <li><Link href="/pricing">Products</Link></li>
+              <li><Link href="/services">Shopify & Amazon</Link></li>
+              <li><Link href="/services">Wholesale</Link></li>
             </ul>
           </div>
 
@@ -35,7 +40,6 @@ export default function Footer() {
             <h5>Company</h5>
             <ul className="footer-links">
               <li><Link href="/about">About</Link></li>
-              <li><Link href="/pricing">Pricing</Link></li>
               <li><Link href="/faq">FAQ</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
@@ -46,14 +50,14 @@ export default function Footer() {
             <ul className="footer-links">
               <li><Link href="/privacy">Privacy</Link></li>
               <li><Link href="/terms">Terms</Link></li>
-              <li><Link href="/refund-policy">Refunds</Link></li>
+              <li><Link href="/refund-policy">Returns & refunds</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Paudelon</span>
-          <span>Sheridan, WY</span>
+          <span>© {new Date().getFullYear()} Paudelon LLC</span>
+          <span>Sheridan, Wyoming</span>
         </div>
       </div>
     </footer>

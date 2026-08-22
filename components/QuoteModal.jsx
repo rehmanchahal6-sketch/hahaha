@@ -8,8 +8,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
     name: '',
     email: '',
     company: '',
-    service: initialService || 'Email Marketing',
-    budget: '$1,000 - $3,000 / mo',
+    service: initialService || 'General Inquiry',
     message: '',
   });
   const [errors, setErrors] = useState({});
@@ -19,7 +18,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
     if (isOpen) {
       setFormData((prev) => ({
         ...prev,
-        service: initialService || prev.service || 'Email Marketing',
+        service: initialService || prev.service || 'General Inquiry',
       }));
     }
   }, [isOpen, initialService]);
@@ -31,7 +30,6 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
     if (!formData.name.trim()) next.name = 'Required';
     if (!formData.email.trim()) next.email = 'Required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) next.email = 'Enter a valid email';
-    if (!formData.company.trim()) next.company = 'Required';
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -44,15 +42,14 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
       setIsSubmitting(false);
       onClose();
       showToast({
-        title: 'Request sent',
+        title: 'Inquiry sent',
         message: 'We’ll get back to you within one business day.',
       });
       setFormData({
         name: '',
         email: '',
         company: '',
-        service: 'Email Marketing',
-        budget: '$1,000 - $3,000 / mo',
+        service: 'General Inquiry',
         message: '',
       });
     }, 600);
@@ -65,10 +62,10 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
           <X size={18} />
         </button>
 
-        <span className="eyebrow">Quote</span>
-        <h2 style={{ fontSize: '1.5rem', marginBottom: '0.35rem' }}>Tell us what you need</h2>
+        <span className="eyebrow">Inquiry</span>
+        <h2 style={{ fontSize: '1.5rem', marginBottom: '0.35rem' }}>Contact Paudelon LLC</h2>
         <p style={{ marginBottom: '1.25rem', fontSize: '0.95rem' }}>
-          A few details are enough. We’ll follow up with a clear scope.
+          Order support, wholesale pricing, or general business questions.
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -96,54 +93,40 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
 
           <div className="grid-2">
             <div className="form-group">
-              <label className="form-label">Company *</label>
+              <label className="form-label">Company (optional)</label>
               <input
                 className="form-input"
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               />
-              {errors.company && <span className="form-error-msg">{errors.company}</span>}
             </div>
             <div className="form-group">
-              <label className="form-label">Service</label>
+              <label className="form-label">Inquiry type</label>
               <select
                 className="form-select"
                 value={formData.service}
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
               >
-                <option>Email Marketing</option>
-                <option>Email Automation</option>
-                <option>Website Development</option>
-                <option>IT Consulting & Support</option>
-                <option>Starter Package</option>
-                <option>Growth Package</option>
-                <option>Business Package</option>
+                <option>General Inquiry</option>
+                <option>Order Support</option>
+                <option>Wholesale Inquiry</option>
+                <option>Shopify Store</option>
+                <option>Amazon Marketplace</option>
+                <option>Product Inquiry</option>
+                <option>Supplier / Partnership</option>
+                <option>Dropshipping</option>
               </select>
             </div>
           </div>
 
           <div className="form-group">
-            <label className="form-label">Budget</label>
-            <select
-              className="form-select"
-              value={formData.budget}
-              onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-            >
-              <option>Under $1,000 / mo</option>
-              <option>$1,000 - $3,000 / mo</option>
-              <option>$3,000 - $7,000 / mo</option>
-              <option>$7,000+ / mo</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label className="form-label">Notes</label>
+            <label className="form-label">Message</label>
             <textarea
               className="form-textarea"
               rows={3}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Optional context…"
+              placeholder="How can we help?"
             />
           </div>
 
@@ -152,7 +135,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
               Cancel
             </button>
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending…' : 'Send request'}
+              {isSubmitting ? 'Sending…' : 'Send inquiry'}
               <Send size={15} />
             </button>
           </div>

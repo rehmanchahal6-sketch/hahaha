@@ -1,33 +1,40 @@
 'use client';
 
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 import { useQuote } from '@/components/QuoteProvider';
 
-const packages = [
+const productLines = [
   {
-    tag: 'Starter',
-    title: 'Setup',
-    desc: 'Get the basics right—auth, platform, and one solid automation.',
+    tag: 'Dogs & cats',
+    title: 'Food & treats',
+    desc: 'Everyday nutrition, treats, and feeding accessories for common household pets.',
     featured: false,
-    items: ['DNS authentication', 'Email platform setup', 'Welcome flow', 'One template'],
-    service: 'Starter Package',
+    items: ['Dry & wet food', 'Treats & chews', 'Bowls & feeders', 'Supplements'],
+    service: 'Product Inquiry',
   },
   {
-    tag: 'Growth',
-    title: 'Ongoing',
-    desc: 'Regular campaigns and upkeep for teams that send every month.',
+    tag: 'All pets',
+    title: 'Toys & enrichment',
+    desc: 'Interactive and durable products that keep pets active and engaged.',
     featured: true,
-    items: ['Everything in Setup', 'Monthly campaigns', 'Flow updates', 'Light site care'],
-    service: 'Growth Package',
+    items: ['Chew toys', 'Puzzle feeders', 'Plush & fetch toys', 'Training aids'],
+    service: 'Product Inquiry',
   },
   {
-    tag: 'Custom',
-    title: 'Partner',
-    desc: 'Broader support across IT, web, and automation.',
+    tag: 'Care',
+    title: 'Grooming & health',
+    desc: 'Hygiene, grooming, and wellness items for routine pet care.',
     featured: false,
-    items: ['Everything in Ongoing', 'Custom development', 'Priority support', 'Dedicated lead'],
-    service: 'Business Package',
+    items: ['Brushes & combs', 'Shampoos', 'Dental care', 'Health supplements'],
+    service: 'Product Inquiry',
   },
+];
+
+const channels = [
+  { name: 'Shopify', desc: 'Our direct online store for retail customers.' },
+  { name: 'Amazon', desc: 'Marketplace listings for broader nationwide reach.' },
+  { name: 'Wholesale', desc: 'Bulk pricing for retailers and pet businesses.' },
 ];
 
 export default function PricingPage() {
@@ -37,16 +44,16 @@ export default function PricingPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow">Pricing</span>
-          <h1>Simple packages</h1>
-          <p>Starting points only. Every project gets a written quote first.</p>
+          <span className="eyebrow">Products</span>
+          <h1>Pet product lines</h1>
+          <p>Categories we sell through Shopify, Amazon, wholesale, and dropshipping channels.</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="pricing-grid">
-            {packages.map((pkg) => (
+            {productLines.map((pkg) => (
               <div key={pkg.title} className={`price-card ${pkg.featured ? 'featured' : ''}`}>
                 <div>
                   <span className="tag">{pkg.tag}</span>
@@ -65,11 +72,34 @@ export default function PricingPage() {
                   className={`btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'} btn-full`}
                   onClick={() => openQuote(pkg.service)}
                 >
-                  Get a quote
+                  Contact us
                 </button>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Channels</span>
+            <h2>Where we sell</h2>
+            <p>Paudelon LLC sells pet products through established e-commerce platforms.</p>
+          </div>
+          <div className="feature-grid">
+            {channels.map((item) => (
+              <div key={item.name}>
+                <h3>{item.name}</h3>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ marginTop: '1.5rem' }}>
+            <Link href="/contact" className="text-link">
+              Wholesale or order inquiries →
+            </Link>
+          </p>
         </div>
       </section>
     </>

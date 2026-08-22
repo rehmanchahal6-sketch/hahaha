@@ -6,44 +6,44 @@ import { useQuote } from '@/components/QuoteProvider';
 
 const servicesData = [
   {
-    category: 'Email',
-    title: 'Email marketing',
-    desc: 'Campaign planning, templates, and reporting for regular sends.',
-    deliverables: ['Template design', 'Campaign copy', 'List hygiene', 'Performance summary'],
+    category: 'Retail',
+    title: 'Shopify store',
+    desc: 'Direct-to-consumer pet products through our branded Shopify storefront.',
+    deliverables: ['Pet food & treats', 'Toys & accessories', 'Grooming supplies', 'Secure checkout'],
   },
   {
-    category: 'Email',
-    title: 'Email automation',
-    desc: 'Triggered flows for welcome, nurture, and re-engagement.',
-    deliverables: ['Welcome series', 'Behavioral triggers', 'Tagging setup', 'Flow QA'],
+    category: 'Retail',
+    title: 'Amazon marketplace',
+    desc: 'Pet supplies listed and sold through Amazon for nationwide reach.',
+    deliverables: ['Product listings', 'Order fulfillment', 'Customer support', 'Inventory management'],
   },
   {
-    category: 'Web',
-    title: 'Website development',
-    desc: 'Clean, fast sites built for clarity and conversions.',
-    deliverables: ['Responsive build', 'Basic SEO setup', 'Form integrations', 'Handoff docs'],
+    category: 'Wholesale',
+    title: 'Bulk & B2B orders',
+    desc: 'Wholesale pet product supply for retailers, groomers, and pet businesses.',
+    deliverables: ['Volume pricing', 'Product selection', 'Delivery coordination', 'Account support'],
   },
   {
-    category: 'Web',
-    title: 'Website maintenance',
-    desc: 'Updates, backups, and small content changes over time.',
-    deliverables: ['Monitoring', 'Security updates', 'Backups', 'Content edits'],
+    category: 'Wholesale',
+    title: 'Dropshipping',
+    desc: 'Fulfillment partnerships that support lean inventory and scalable online sales.',
+    deliverables: ['Supplier coordination', 'Order routing', 'Tracking updates', 'Returns handling'],
   },
   {
-    category: 'IT',
-    title: 'IT & deliverability',
-    desc: 'DNS auth, email platforms, and practical technical support.',
-    deliverables: ['SPF / DKIM / DMARC', 'Platform setup', 'Migration help', 'Support hours'],
+    category: 'Products',
+    title: 'Food & nutrition',
+    desc: 'Treats, supplements, and feeding essentials for dogs, cats, and small pets.',
+    deliverables: ['Dry & wet food', 'Treats & chews', 'Supplements', 'Feeding accessories'],
   },
   {
-    category: 'Automation',
-    title: 'Business automation',
-    desc: 'Connect tools so data moves without double entry.',
-    deliverables: ['Workflow mapping', 'Integrations', 'Notifications', 'Error checks'],
+    category: 'Products',
+    title: 'Care & lifestyle',
+    desc: 'Everyday items that keep pets comfortable, active, and healthy.',
+    deliverables: ['Grooming tools', 'Beds & carriers', 'Toys & enrichment', 'Health & hygiene'],
   },
 ];
 
-const categories = ['All', 'Email', 'Web', 'IT', 'Automation'];
+const categories = ['All', 'Retail', 'Wholesale', 'Products'];
 
 export default function ServicesPage() {
   const { openQuote } = useQuote();
@@ -66,9 +66,12 @@ export default function ServicesPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow">Services</span>
-          <h1>Work we take on</h1>
-          <p>Email, web, IT, and automation—each with a clear deliverable list.</p>
+          <span className="eyebrow">What we sell</span>
+          <h1>E-commerce & pet products</h1>
+          <p>
+            Online retail, wholesale, and dropshipping of pet supplies through Shopify, Amazon, and
+            direct business channels.
+          </p>
         </div>
       </section>
 
@@ -121,7 +124,7 @@ export default function ServicesPage() {
                   ))}
                 </div>
                 <button className="btn btn-primary btn-full" onClick={() => openQuote(item.title)}>
-                  Request quote
+                  Contact us
                 </button>
               </article>
             ))}

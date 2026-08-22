@@ -8,9 +8,9 @@ import { useQuote } from '@/components/QuoteProvider';
 
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
+  { href: '/services', label: 'What we sell' },
   { href: '/about', label: 'About' },
-  { href: '/pricing', label: 'Pricing' },
+  { href: '/pricing', label: 'Products' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -51,7 +51,7 @@ export default function Header() {
             Contact
           </Link>
           <button type="button" className="btn btn-primary btn-sm" onClick={() => openQuote()}>
-            Get a quote
+            Send inquiry
           </button>
           <button
             type="button"
@@ -93,7 +93,7 @@ export default function Header() {
               openQuote();
             }}
           >
-            Get a quote
+            Send inquiry
           </button>
         </div>
       )}

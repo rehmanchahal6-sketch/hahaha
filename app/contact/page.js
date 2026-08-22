@@ -10,7 +10,7 @@ export default function ContactPage() {
     name: '',
     email: '',
     company: '',
-    service: 'Email Marketing',
+    service: 'General Inquiry',
     message: '',
   });
   const [errors, setErrors] = useState({});
@@ -22,7 +22,6 @@ export default function ContactPage() {
     if (!formData.name.trim()) next.name = 'Required';
     if (!formData.email.trim()) next.email = 'Required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) next.email = 'Invalid email';
-    if (!formData.company.trim()) next.company = 'Required';
     if (!formData.message.trim()) next.message = 'Required';
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -48,7 +47,7 @@ export default function ContactPage() {
         <div className="container">
           <span className="eyebrow">Contact</span>
           <h1>Get in touch</h1>
-          <p>Questions or project ideas—send a note and we’ll reply.</p>
+          <p>Order questions, wholesale inquiries, or general business contact for Paudelon LLC.</p>
         </div>
       </section>
 
@@ -56,8 +55,17 @@ export default function ContactPage() {
         <div className="container">
           <div className="services-grid">
             <div>
-              <h3 style={{ marginBottom: '0.75rem' }}>Details</h3>
+              <h3 style={{ marginBottom: '0.75rem' }}>Company details</h3>
               <div style={{ display: 'grid', gap: '0.85rem' }}>
+                <div className="panel">
+                  <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>
+                    Legal name
+                  </div>
+                  <div style={{ fontWeight: 650 }}>Paudelon LLC</div>
+                  <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginTop: '0.25rem' }}>
+                    Wyoming limited liability company
+                  </div>
+                </div>
                 <div className="panel" style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
                   <Mail size={18} />
                   <div>
@@ -70,12 +78,21 @@ export default function ContactPage() {
                 <div className="panel" style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
                   <MapPin size={18} style={{ marginTop: 2 }} />
                   <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>Address</div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>Registered address</div>
                     <div style={{ fontWeight: 650, lineHeight: 1.45 }}>
                       30 N Gould St Ste R
                       <br />
                       Sheridan, WY 82801
                     </div>
+                  </div>
+                </div>
+                <div className="panel">
+                  <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>
+                    Business activity
+                  </div>
+                  <div style={{ lineHeight: 1.5 }}>
+                    E-commerce, online retail, wholesale, and dropshipping of pet products through
+                    Shopify, Amazon, and other lawful sales channels.
                   </div>
                 </div>
               </div>
@@ -116,25 +133,26 @@ export default function ContactPage() {
                     </div>
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Company *</label>
+                    <label className="form-label">Company (optional)</label>
                     <input
                       className="form-input"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     />
-                    {errors.company && <span className="form-error-msg">{errors.company}</span>}
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Service</label>
+                    <label className="form-label">Inquiry type</label>
                     <select
                       className="form-select"
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     >
-                      <option>Email Marketing</option>
-                      <option>Email Automation</option>
-                      <option>Website Development</option>
-                      <option>IT Consulting & Support</option>
+                      <option>General Inquiry</option>
+                      <option>Order Support</option>
+                      <option>Wholesale Inquiry</option>
+                      <option>Shopify Store</option>
+                      <option>Amazon Marketplace</option>
+                      <option>Supplier / Partnership</option>
                     </select>
                   </div>
                   <div className="form-group">
