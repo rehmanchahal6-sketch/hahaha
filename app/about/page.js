@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { useQuote } from '@/components/QuoteProvider';
+import CompanyDetails from '@/components/CompanyDetails';
+import { company } from '@/lib/company';
 
 export default function AboutPage() {
   const { openQuote } = useQuote();
@@ -11,71 +13,33 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">About</span>
-          <h1>Paudelon LLC</h1>
+          <h1>{company.legalName}</h1>
           <p>
-            A Wyoming limited liability company engaged in e-commerce and the online sale of pet
-            products.
+            A {company.entityType} engaged in e-commerce and the online sale of pet products in the
+            United States.
           </p>
         </div>
       </section>
 
       <section className="section">
-        <div className="container" style={{ maxWidth: 680 }}>
+        <div className="container" style={{ maxWidth: 720 }}>
           <h2 style={{ marginBottom: '1rem' }}>Company overview</h2>
           <p style={{ marginBottom: '1rem' }}>
-            Paudelon LLC operates as an e-commerce business selling pet products through online
-            retail, wholesale, and dropshipping channels. Our primary sales platforms include
+            {company.legalName} operates as an e-commerce business selling pet products through
+            online retail, wholesale, and dropshipping channels. Our primary sales platforms include
             Shopify and Amazon.
           </p>
-          <p style={{ marginBottom: '1rem' }}>
-            The company engages in e-commerce, online retail, wholesale, dropshipping, and other
-            lawful business activities related to the pet supplies market.
-          </p>
+          <p style={{ marginBottom: '1rem' }}>{company.businessActivity}</p>
           <p>
-            We focus on practical, quality products for pet owners—sourced responsibly, listed
-            clearly, and fulfilled reliably.
+            We focus on practical, quality pet products—sourced responsibly, listed clearly, and
+            fulfilled reliably for retail and wholesale customers.
           </p>
         </div>
       </section>
 
       <section className="section section-alt">
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">Details</span>
-            <h2>Business information</h2>
-          </div>
-          <div className="feature-grid">
-            <div>
-              <h3>Legal name</h3>
-              <p>Paudelon LLC</p>
-            </div>
-            <div>
-              <h3>Entity type</h3>
-              <p>Wyoming limited liability company</p>
-            </div>
-            <div>
-              <h3>Industry</h3>
-              <p>E-commerce · Online retail · Pet products</p>
-            </div>
-            <div>
-              <h3>Sales channels</h3>
-              <p>Shopify, Amazon, wholesale & dropshipping</p>
-            </div>
-            <div>
-              <h3>Registered address</h3>
-              <p>
-                30 N Gould St Ste R
-                <br />
-                Sheridan, WY 82801
-              </p>
-            </div>
-            <div>
-              <h3>Contact</h3>
-              <p>
-                <a href="mailto:sujanpaudel368@gmail.com">sujanpaudel368@gmail.com</a>
-              </p>
-            </div>
-          </div>
+        <div className="container" style={{ maxWidth: 820 }}>
+          <CompanyDetails />
         </div>
       </section>
 
@@ -84,15 +48,15 @@ export default function AboutPage() {
           <div className="feature-grid">
             <div>
               <h3>Online retail</h3>
-              <p>Pet products sold directly to consumers through our e-commerce storefronts.</p>
-            </div>
-            <div>
-              <h3>Marketplace sales</h3>
-              <p>Curated listings on Amazon and other approved online marketplaces.</p>
+              <p>Pet products sold directly to consumers through Shopify and Amazon storefronts.</p>
             </div>
             <div>
               <h3>Wholesale supply</h3>
-              <p>Bulk orders for retailers and pet businesses that need consistent inventory.</p>
+              <p>Bulk orders for retailers, groomers, and pet businesses needing consistent inventory.</p>
+            </div>
+            <div>
+              <h3>Dropshipping</h3>
+              <p>Supplier fulfillment partnerships that support scalable online sales operations.</p>
             </div>
           </div>
         </div>
@@ -100,10 +64,30 @@ export default function AboutPage() {
 
       <section className="section section-alt">
         <div className="container">
+          <div className="trust-panel">
+            <h3>Business verification</h3>
+            <p>
+              Banks, partners, and vendors may contact us for company verification. Please email{' '}
+              {company.email} from your official organization address and include your company name
+              and reason for the request. We respond within {company.responseTime.toLowerCase()}.
+            </p>
+            <div className="trust-links">
+              <Link href="/faq">FAQ</Link>
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/terms">Terms of Service</Link>
+              <Link href="/refund-policy">Returns & Refunds</Link>
+              <Link href="/contact">Contact</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
           <div className="cta-band">
             <div>
               <h2>Questions about our business?</h2>
-              <p>Contact us for wholesale pricing, order support, or general inquiries.</p>
+              <p>Contact us for wholesale pricing, order support, or verification inquiries.</p>
             </div>
             <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
               <Link href="/contact" className="btn btn-secondary">

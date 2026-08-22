@@ -108,6 +108,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
               >
                 <option>General Inquiry</option>
+                <option>Business Verification</option>
                 <option>Order Support</option>
                 <option>Wholesale Inquiry</option>
                 <option>Shopify Store</option>

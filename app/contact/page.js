@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle2, Mail, MapPin, Send } from 'lucide-react';
+import { CheckCircle2, Send } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
+import CompanyDetails from '@/components/CompanyDetails';
+import { company } from '@/lib/company';
 
 export default function ContactPage() {
   const { showToast } = useQuote();
@@ -37,7 +39,7 @@ export default function ContactPage() {
     setTimeout(() => {
       setIsSubmitting(false);
       setDone(true);
-      showToast({ title: 'Sent', message: 'We’ll reply within one business day.' });
+      showToast({ title: 'Sent', message: `We’ll reply within ${company.responseTime.toLowerCase()}.` });
     }, 700);
   };
 
@@ -47,7 +49,10 @@ export default function ContactPage() {
         <div className="container">
           <span className="eyebrow">Contact</span>
           <h1>Get in touch</h1>
-          <p>Order questions, wholesale inquiries, or general business contact for Paudelon LLC.</p>
+          <p>
+            Order support, wholesale inquiries, and business verification contact for{' '}
+            {company.legalName}.
+          </p>
         </div>
       </section>
 
@@ -55,46 +60,14 @@ export default function ContactPage() {
         <div className="container">
           <div className="services-grid">
             <div>
-              <h3 style={{ marginBottom: '0.75rem' }}>Company details</h3>
-              <div style={{ display: 'grid', gap: '0.85rem' }}>
-                <div className="panel">
-                  <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>
-                    Legal name
-                  </div>
-                  <div style={{ fontWeight: 650 }}>Paudelon LLC</div>
-                  <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginTop: '0.25rem' }}>
-                    Wyoming limited liability company
-                  </div>
-                </div>
-                <div className="panel" style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                  <Mail size={18} />
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>Email</div>
-                    <a href="mailto:sujanpaudel368@gmail.com" style={{ fontWeight: 650 }}>
-                      sujanpaudel368@gmail.com
-                    </a>
-                  </div>
-                </div>
-                <div className="panel" style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                  <MapPin size={18} style={{ marginTop: 2 }} />
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>Registered address</div>
-                    <div style={{ fontWeight: 650, lineHeight: 1.45 }}>
-                      30 N Gould St Ste R
-                      <br />
-                      Sheridan, WY 82801
-                    </div>
-                  </div>
-                </div>
-                <div className="panel">
-                  <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>
-                    Business activity
-                  </div>
-                  <div style={{ lineHeight: 1.5 }}>
-                    E-commerce, online retail, wholesale, and dropshipping of pet products through
-                    Shopify, Amazon, and other lawful sales channels.
-                  </div>
-                </div>
+              <CompanyDetails title="Registered company details" />
+              <div className="trust-panel" style={{ marginTop: '1rem' }}>
+                <h3>Verification requests</h3>
+                <p style={{ marginBottom: 0 }}>
+                  Banks and business partners may contact us at{' '}
+                  <a href={`mailto:${company.email}`}>{company.email}</a> for company verification.
+                  Include your organization name and the purpose of your request.
+                </p>
               </div>
             </div>
 
@@ -148,6 +121,7 @@ export default function ContactPage() {
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     >
                       <option>General Inquiry</option>
+                      <option>Business Verification</option>
                       <option>Order Support</option>
                       <option>Wholesale Inquiry</option>
                       <option>Shopify Store</option>

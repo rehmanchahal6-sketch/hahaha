@@ -1,5 +1,7 @@
+import { company, addressBlock } from '@/lib/company';
+
 export const metadata = {
-  title: 'Terms of Service | Paudelon LLC',
+  title: 'Terms of Service',
 };
 
 export default function TermsPage() {
@@ -14,45 +16,82 @@ export default function TermsPage() {
       </section>
       <section className="section">
         <div className="container legal-copy" style={{ maxWidth: 820 }}>
-          <h3>1. Acceptance of terms</h3>
+          <h3>1. Agreement to terms</h3>
           <p>
-            By accessing this website or purchasing products from Paudelon LLC, you agree to these
-            Terms of Service. Paudelon LLC is a Wyoming limited liability company engaged in
-            e-commerce, online retail, wholesale, and dropshipping of pet products.
+            By accessing {company.websiteDisplay} or purchasing products from {company.legalName},
+            you agree to these Terms of Service. {company.legalName} is a {company.entityType}{' '}
+            formed in the State of {company.stateOfFormation}, United States.
           </p>
-          <h3>2. Products & sales channels</h3>
+
+          <h3>2. Business description</h3>
           <p>
-            Pet products are sold through our website, Shopify store, Amazon listings, and direct
-            wholesale arrangements. Product availability, pricing, and shipping terms may vary by
-            channel and are confirmed at the time of purchase.
+            {company.legalName} {company.businessActivity.toLowerCase()} The company sells{' '}
+            {company.productFocus.toLowerCase()} through online retail, wholesale, dropshipping, and
+            related e-commerce channels including Shopify and Amazon.
           </p>
-          <h3>3. Orders & payment</h3>
+
+          <h3>3. Products and sales channels</h3>
           <p>
-            Orders placed on third-party platforms are subject to those platforms&apos; terms and
-            payment policies. Wholesale orders require written confirmation of pricing, quantity,
-            and delivery terms before fulfillment.
+            Pet products are offered through our website, Shopify store, Amazon listings, and direct
+            wholesale arrangements. Product availability, pricing, shipping costs, and payment terms
+            may vary by channel and are confirmed at the time of purchase.
           </p>
-          <h3>4. Product information</h3>
+
+          <h3>4. Orders and payment</h3>
           <p>
-            We strive to provide accurate product descriptions and images. If a product differs
-            materially from its listing, contact us for resolution in line with our Refund Policy.
+            Orders placed on third-party platforms are governed by those platforms&apos; terms and payment
+            policies. Wholesale orders require written confirmation of pricing, quantity, payment
+            terms, and delivery before fulfillment begins.
           </p>
-          <h3>5. Limitation of liability</h3>
+
+          <h3>5. Product descriptions</h3>
           <p>
-            To the maximum extent permitted by Wyoming law, Paudelon LLC is not liable for indirect
-            or consequential damages arising from product use, shipping delays, or third-party
-            platform outages beyond our reasonable control.
+            We make reasonable efforts to ensure product descriptions, images, and pricing are
+            accurate. If a product you receive differs materially from its listing, contact us
+            promptly for resolution under our Returns & Refunds policy.
           </p>
-          <h3>6. Governing law</h3>
+
+          <h3>6. Shipping and delivery</h3>
           <p>
-            These terms are governed by the laws of the State of Wyoming, without regard to
-            conflict-of-law principles.
+            Delivery times and shipping methods depend on the sales channel, product availability,
+            and destination. Estimated delivery windows are provided at checkout where applicable.
           </p>
-          <h3>7. Contact</h3>
+
+          <h3>7. Returns and refunds</h3>
           <p>
-            Legal questions: <a href="mailto:sujanpaudel368@gmail.com">sujanpaudel368@gmail.com</a>
+            Returns and refunds are handled according to our Returns & Refunds policy and the policies
+            of the platform where the order was placed.
+          </p>
+
+          <h3>8. Acceptable use</h3>
+          <p>
+            You agree not to misuse this website, attempt unauthorized access to our systems, or use
+            our services for unlawful purposes.
+          </p>
+
+          <h3>9. Limitation of liability</h3>
+          <p>
+            To the maximum extent permitted by the laws of the State of {company.stateOfFormation},{' '}
+            {company.legalName} is not liable for indirect, incidental, or consequential damages
+            arising from product use, shipping delays, or third-party platform outages beyond our
+            reasonable control.
+          </p>
+
+          <h3>10. Governing law</h3>
+          <p>
+            These Terms are governed by the laws of the State of {company.stateOfFormation}, United
+            States, without regard to conflict-of-law principles.
+          </p>
+
+          <h3>11. Contact</h3>
+          <p>
+            {company.legalName}
             <br />
-            Paudelon LLC · 30 N Gould St Ste R, Sheridan, WY 82801
+            {addressBlock}
+            <br />
+            Website: <a href={company.website}>{company.websiteDisplay}</a>
+            <br />
+            Email: <a href={`mailto:${company.email}`}>{company.email}</a>
           </p>
         </div>
       </section>

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
 import Accordion from '@/components/Accordion';
+import CompanyDetails from '@/components/CompanyDetails';
+import { company, homepageFaqs } from '@/lib/company';
 
 const channels = [
   {
@@ -56,32 +58,7 @@ const steps = [
   },
 ];
 
-const faqs = [
-  {
-    q: 'What does Paudelon LLC do?',
-    a: 'Paudelon LLC is a Wyoming-based e-commerce company engaged in online retail, wholesale, and dropshipping of pet products through Shopify, Amazon, and other lawful sales channels.',
-  },
-  {
-    q: 'Where can I buy your products?',
-    a: 'Our pet products are sold through our Shopify store and on Amazon. Wholesale buyers can contact us directly for bulk pricing and availability.',
-  },
-  {
-    q: 'What types of pet products do you sell?',
-    a: 'We offer pet food and treats, toys, grooming supplies, beds, health products, and everyday accessories for dogs, cats, and other household pets.',
-  },
-  {
-    q: 'Do you offer wholesale or bulk orders?',
-    a: 'Yes. We supply retailers, groomers, and pet businesses with wholesale pricing on select product lines. Send an inquiry with your company details and estimated volume.',
-  },
-  {
-    q: 'How are orders shipped?',
-    a: 'Retail orders ship through our standard e-commerce fulfillment process. Wholesale and bulk orders follow agreed delivery terms outlined at the time of purchase.',
-  },
-  {
-    q: 'How do I contact Paudelon LLC?',
-    a: 'Email sujanpaudel368@gmail.com or use the contact form. We respond to order questions, wholesale requests, and general business inquiries.',
-  },
-];
+const faqs = homepageFaqs;
 
 export default function HomePage() {
   const { openQuote } = useQuote();
@@ -189,6 +166,17 @@ export default function HomePage() {
               View all categories
             </Link>
           </p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container" style={{ maxWidth: 820 }}>
+          <div className="section-head">
+            <span className="eyebrow">Company</span>
+            <h2>Official business information</h2>
+            <p>Registered details for {company.legalName}, published for customers and business verification.</p>
+          </div>
+          <CompanyDetails title="" />
         </div>
       </section>
 
