@@ -13,6 +13,8 @@ export default function PolicyShell({ eyebrow, title, updated, children }) {
             {company.legalName} · {company.jurisdiction} · NAICS {company.naics} ·{' '}
             {company.websiteDisplay} ·{' '}
             <a href={`mailto:${company.email}`}>{company.email}</a>
+            {' · '}
+            <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
           </p>
         </div>
       </section>
@@ -31,9 +33,9 @@ export default function PolicyShell({ eyebrow, title, updated, children }) {
               </nav>
               <div className="policy-sidebar-note">
                 <p>Questions about orders or policies?</p>
-                <Link href="/contact" className="text-link">
-                  Contact {company.legalName}
-                </Link>
+                <a href={`mailto:${company.supportEmail}`} className="text-link">
+                  {company.supportEmail}
+                </a>
               </div>
             </aside>
             <article className="legal-copy policy-content">{children}</article>

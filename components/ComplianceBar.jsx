@@ -8,6 +8,8 @@ export default function ComplianceBar() {
         <span>{company.legalName}</span>
         <span aria-hidden>·</span>
         <a href={`mailto:${company.email}`}>{company.email}</a>
+        <span aria-hidden>·</span>
+        <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
         <Link href="/company" className="compliance-bar-link">
           Corporate information
         </Link>

@@ -21,6 +21,8 @@ export default function Footer() {
               </a>
               <span aria-hidden>·</span>
               <a href={`mailto:${company.email}`}>{company.email}</a>
+              <span aria-hidden>·</span>
+              <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
               {company.phone && company.phoneDisplay ? (
                 <>
                   <span aria-hidden>·</span>

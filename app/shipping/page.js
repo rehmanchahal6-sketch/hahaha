@@ -99,7 +99,7 @@ export default function ShippingPage() {
 
       <h3>11. Contact</h3>
       <p>
-        Shipping questions: <a href={`mailto:${company.email}`}>{company.email}</a>
+        Shipping questions: <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
         <br />
         {company.legalName} · {addressBlock}
         <br />

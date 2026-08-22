@@ -52,15 +52,24 @@ const organizationSchema = {
     '@type': 'Person',
     name: company.managingMember,
   },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'customer service',
-    email: company.email,
-    availableLanguage: 'English',
-    areaServed: company.country,
-    hoursAvailable: company.hours,
-    ...(company.phone ? { telephone: company.phone } : {}),
-  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: company.supportEmail,
+      availableLanguage: 'English',
+      areaServed: company.country,
+      hoursAvailable: company.hours,
+      ...(company.phone ? { telephone: company.phone } : {}),
+    },
+    {
+      '@type': 'ContactPoint',
+      contactType: 'business',
+      email: company.email,
+      availableLanguage: 'English',
+      areaServed: company.country,
+    },
+  ],
   address: {
     '@type': 'PostalAddress',
     streetAddress: company.address.line1,

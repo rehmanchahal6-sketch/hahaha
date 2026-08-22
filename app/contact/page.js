@@ -83,8 +83,12 @@ export default function ContactPage() {
               <div className="trust-panel" style={{ marginTop: '1rem' }}>
                 <h3>Direct contact</h3>
                 <p style={{ marginBottom: '0.5rem' }}>
-                  <strong>Email:</strong>{' '}
+                  <strong>Contact:</strong>{' '}
                   <a href={`mailto:${company.email}`}>{company.email}</a>
+                </p>
+                <p style={{ marginBottom: '0.5rem' }}>
+                  <strong>Support:</strong>{' '}
+                  <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
                 </p>
                 {company.phone && company.phoneDisplay ? (
                   <p style={{ marginBottom: '0.5rem' }}>

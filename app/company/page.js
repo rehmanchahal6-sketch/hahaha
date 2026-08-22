@@ -53,9 +53,21 @@ export default function CompanyPage() {
           <h2 style={{ marginBottom: '1rem' }}>Contact & verification</h2>
           <div className="feature-grid">
             <div className="panel">
-              <h3>Email</h3>
+              <h3>Contact</h3>
               <p>
                 <a href={`mailto:${company.email}`}>{company.email}</a>
+              </p>
+              <p style={{ marginTop: '0.35rem', fontSize: '0.9rem', color: 'var(--muted)' }}>
+                Business, wholesale, and verification inquiries
+              </p>
+            </div>
+            <div className="panel">
+              <h3>Support</h3>
+              <p>
+                <a href={`mailto:${company.supportEmail}`}>{company.supportEmail}</a>
+              </p>
+              <p style={{ marginTop: '0.35rem', fontSize: '0.9rem', color: 'var(--muted)' }}>
+                Order help, shipping, and returns
               </p>
             </div>
             <div className="panel">
