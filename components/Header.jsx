@@ -7,9 +7,8 @@ import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
-  { href: '/about', label: 'About Us' },
-  { href: '/company', label: 'Company' },
+  { href: '/products', label: 'Shop' },
+  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -49,11 +48,8 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <Link href="/contact" className="btn btn-secondary btn-sm nav-contact">
-            Contact
-          </Link>
           <Link href="/products" className="btn btn-primary btn-sm">
-            Shop
+            Shop now
           </Link>
           <button
             type="button"
@@ -79,16 +75,8 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            className="btn btn-secondary"
-            style={{ marginTop: '0.65rem' }}
-            onClick={() => setOpen(false)}
-          >
-            Contact
-          </Link>
           <Link href="/products" className="btn btn-primary" onClick={() => setOpen(false)}>
-            Shop
+            Shop now
           </Link>
         </div>
       )}

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import OperationalDisclaimer from '@/components/OperationalDisclaimer';
+import LegalEntityMeta from '@/components/LegalEntityMeta';
 import { company, addressBlock, policyLinks } from '@/lib/company';
 
 const extraRows = [
@@ -22,6 +24,7 @@ if (company.phone && company.phoneDisplay) {
 const rows = [
   { label: 'Legal name', value: company.legalName },
   { label: 'Entity type', value: company.entityType },
+  { label: 'Jurisdiction', value: company.jurisdiction },
   { label: 'State of formation', value: company.stateOfFormation },
   { label: 'Country', value: company.country },
   { label: 'Website', value: company.websiteDisplay, href: company.website },
@@ -64,6 +67,8 @@ export default function CompanyDetails({ title = 'Company information' }) {
           </div>
         ))}
       </dl>
+      <OperationalDisclaimer />
+      <LegalEntityMeta className="legal-entity-meta-inline" />
       <div className="info-table-footer">
         <p>
           Full corporate disclosure:{' '}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import CompanyDetails from '@/components/CompanyDetails';
+import LegalEntityMeta from '@/components/LegalEntityMeta';
 import { company, addressBlock, policyLinks } from '@/lib/company';
 
 export const metadata = {
@@ -29,23 +30,20 @@ export default function CompanyPage() {
 
       <section className="section section-alt">
         <div className="container" style={{ maxWidth: 820 }}>
-          <h2 style={{ marginBottom: '1rem' }}>Business summary</h2>
+          <LegalEntityMeta />
+          <h2 style={{ marginBottom: '1rem', marginTop: '1rem' }}>Business summary</h2>
           <div className="legal-copy">
             <p>
-              {company.legalName} is a {company.entityType} formed in {company.stateOfFormation},{' '}
-              {company.country}. The company is managed by {company.managingMember}, managing member.
+              {company.legalName} is a {company.entityType} formed in {company.jurisdiction}. The
+              company is managed by {company.managingMember}, managing member.
             </p>
             <p>{company.businessActivity}</p>
             <p>
               The company sells {company.productFocus.toLowerCase()} through online retail,
               wholesale, and dropshipping. Primary sales channels include Shopify, Amazon, and
-              direct B2B arrangements.
+              direct B2B arrangements. Principal industry classification: NAICS {company.naics}.
             </p>
             <p>{company.operationsModel}</p>
-            <p>
-              The address listed below is the company&apos;s registered office and official mailing
-              address in Wyoming. {company.addressPurpose}
-            </p>
           </div>
         </div>
       </section>

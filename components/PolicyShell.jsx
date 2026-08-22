@@ -10,7 +10,8 @@ export default function PolicyShell({ eyebrow, title, updated, children }) {
           <h1>{title}</h1>
           <p>Last updated: {updated}</p>
           <p className="policy-meta">
-            {company.legalName} · {company.websiteDisplay} ·{' '}
+            {company.legalName} · {company.jurisdiction} · NAICS {company.naics} ·{' '}
+            {company.websiteDisplay} ·{' '}
             <a href={`mailto:${company.email}`}>{company.email}</a>
           </p>
         </div>
