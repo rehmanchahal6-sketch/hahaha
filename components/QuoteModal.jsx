@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Send, X } from 'lucide-react';
+import { submitToFormspree } from '@/lib/formspree';
 
 export default function QuoteModal({ isOpen, onClose, initialService = '', showToast }) {
   const [formData, setFormData] = useState({
@@ -34,12 +35,15 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await submitToFormspree({
+        ...formData,
+        source: 'inquiry-modal',
+      });
       onClose();
       showToast({
         title: 'Inquiry sent',
@@ -52,7 +56,15 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', showT
         service: 'General Inquiry',
         message: '',
       });
-    }, 600);
+    } catch (error) {
+      showToast({
+        title: 'Could not send',
+        message: error.message || 'Please email us directly or try again.',
+        type: 'error',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

@@ -5,6 +5,7 @@ import { CheckCircle2, Send } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
 import CompanyDetails from '@/components/CompanyDetails';
 import { company } from '@/lib/company';
+import { submitToFormspree } from '@/lib/formspree';
 
 export default function ContactPage() {
   const { showToast } = useQuote();
@@ -29,18 +30,36 @@ export default function ContactPage() {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) {
       showToast({ title: 'Missing fields', message: 'Please fill in the required fields.', type: 'error' });
       return;
     }
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await submitToFormspree({
+        ...formData,
+        source: 'contact-page',
+      });
       setDone(true);
       showToast({ title: 'Sent', message: `We’ll reply within ${company.responseTime.toLowerCase()}.` });
-    }, 700);
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        service: 'General Inquiry',
+        message: '',
+      });
+    } catch (error) {
+      showToast({
+        title: 'Could not send',
+        message: error.message || 'Please email us directly or try again.',
+        type: 'error',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
