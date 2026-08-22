@@ -36,7 +36,7 @@ export default function TermsPage() {
           </p>
           <h3>6. Contact</h3>
           <p>
-            Legal questions: <a href="mailto:hello@paudelon.com">hello@paudelon.com</a>.
+            Legal questions: <a href="mailto:sujanpaudel368@gmail.com">sujanpaudel368@gmail.com</a>.
           </p>
         </div>
       </section>

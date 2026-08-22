@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           <h3>5. Your rights & contact</h3>
           <p>
             You may request access to, correction of, or deletion of your personal data. Contact{' '}
-            <a href="mailto:hello@paudelon.com">hello@paudelon.com</a>.
+            <a href="mailto:sujanpaudel368@gmail.com">sujanpaudel368@gmail.com</a>.
           </p>
         </div>
       </section>

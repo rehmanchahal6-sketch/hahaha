@@ -13,7 +13,7 @@ export default function Footer() {
               Practical technology, email, and web work for growing businesses.
             </p>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>
-              <a href="mailto:hello@paudelon.com">hello@paudelon.com</a>
+              <a href="mailto:sujanpaudel368@gmail.com">sujanpaudel368@gmail.com</a>
               <br />
               30 N Gould St Ste R
               <br />
