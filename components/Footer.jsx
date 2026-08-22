@@ -32,21 +32,31 @@ export default function Footer() {
 
           <div className="footer-nav-grid">
             <div>
-              <h5>Business</h5>
+              <h5>Shop</h5>
               <ul className="footer-links">
-                <li><Link href="/services">What we sell</Link></li>
-                <li><Link href="/pricing">Products</Link></li>
-                <li><Link href="/services">Shopify & Amazon</Link></li>
-                <li><Link href="/services">Wholesale</Link></li>
+                <li><Link href="/products">All products</Link></li>
+                <li><Link href="/products">Food & treats</Link></li>
+                <li><Link href="/products">Toys & enrichment</Link></li>
+                <li><Link href="/products">Grooming & hygiene</Link></li>
               </ul>
             </div>
 
             <div>
               <h5>Company</h5>
               <ul className="footer-links">
-                <li><Link href="/about">About</Link></li>
-                <li><Link href="/faq">FAQ</Link></li>
+                <li><Link href="/about">About Us</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/faq">FAQ</Link></li>
+                <li><Link href="/services">How we sell</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h5>Customer care</h5>
+              <ul className="footer-links">
+                <li><Link href="/shipping">Shipping Policy</Link></li>
+                <li><Link href="/refund-policy">Returns & Refunds</Link></li>
+                <li><Link href="/contact">Order support</Link></li>
               </ul>
             </div>
 
@@ -55,7 +65,6 @@ export default function Footer() {
               <ul className="footer-links">
                 <li><Link href="/privacy">Privacy Policy</Link></li>
                 <li><Link href="/terms">Terms of Service</Link></li>
-                <li><Link href="/refund-policy">Returns & Refunds</Link></li>
               </ul>
             </div>
           </div>
@@ -67,12 +76,12 @@ export default function Footer() {
             <span>{company.legalName}</span>
           </div>
           <div className="footer-fact">
-            <span className="footer-fact-label">Jurisdiction</span>
-            <span>{company.stateOfFormation}, USA</span>
+            <span className="footer-fact-label">Website</span>
+            <span>{company.websiteDisplay}</span>
           </div>
           <div className="footer-fact">
-            <span className="footer-fact-label">Industry</span>
-            <span>{company.industry}</span>
+            <span className="footer-fact-label">Jurisdiction</span>
+            <span>{company.stateOfFormation}, USA</span>
           </div>
           <div className="footer-fact">
             <span className="footer-fact-label">Registered office</span>

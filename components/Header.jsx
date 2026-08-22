@@ -8,12 +8,15 @@ import { useQuote } from '@/components/QuoteProvider';
 
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/services', label: 'What we sell' },
-  { href: '/about', label: 'About' },
-  { href: '/pricing', label: 'Products' },
-  { href: '/faq', label: 'FAQ' },
+  { href: '/products', label: 'Products' },
+  { href: '/about', label: 'About Us' },
   { href: '/contact', label: 'Contact' },
 ];
+
+function isActive(pathname, href) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export default function Header() {
   const pathname = usePathname();
@@ -37,7 +40,7 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`nav-link ${pathname === item.href ? 'active' : ''}`}
+                  className={`nav-link ${isActive(pathname, item.href) ? 'active' : ''}`}
                 >
                   {item.label}
                 </Link>
@@ -50,9 +53,9 @@ export default function Header() {
           <Link href="/contact" className="btn btn-secondary btn-sm nav-contact">
             Contact
           </Link>
-          <button type="button" className="btn btn-primary btn-sm" onClick={() => openQuote()}>
-            Send inquiry
-          </button>
+          <Link href="/products" className="btn btn-primary btn-sm">
+            Shop
+          </Link>
           <button
             type="button"
             className="menu-btn"
@@ -71,7 +74,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`nav-link ${pathname === item.href ? 'active' : ''}`}
+              className={`nav-link ${isActive(pathname, item.href) ? 'active' : ''}`}
               onClick={() => setOpen(false)}
             >
               {item.label}
@@ -85,16 +88,9 @@ export default function Header() {
           >
             Contact
           </Link>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => {
-              setOpen(false);
-              openQuote();
-            }}
-          >
-            Send inquiry
-          </button>
+          <Link href="/products" className="btn btn-primary" onClick={() => setOpen(false)}>
+            Shop
+          </Link>
         </div>
       )}
     </header>

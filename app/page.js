@@ -6,7 +6,12 @@ import { ArrowRight, Check } from 'lucide-react';
 import { useQuote } from '@/components/QuoteProvider';
 import Accordion from '@/components/Accordion';
 import CompanyDetails from '@/components/CompanyDetails';
+import ProductCard from '@/components/ProductCard';
 import { company, homepageFaqs } from '@/lib/company';
+import { products } from '@/lib/products';
+
+const featuredProducts = products.slice(0, 4);
+const faqs = homepageFaqs;
 
 const channels = [
   {
@@ -58,8 +63,6 @@ const steps = [
   },
 ];
 
-const faqs = homepageFaqs;
-
 export default function HomePage() {
   const { openQuote } = useQuote();
 
@@ -75,19 +78,19 @@ export default function HomePage() {
               dropshipping channels.
             </p>
             <div className="hero-actions">
-              <Link href="/contact" className="btn btn-primary">
-                Contact us
+              <Link href="/products" className="btn btn-primary">
+                Shop products
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/services" className="btn btn-secondary">
-                What we sell
+              <Link href="/about" className="btn btn-secondary">
+                About Us
               </Link>
             </div>
           </div>
           <div className="hero-visual">
             <Image
-              src="/images/hero_paudelon.png"
-              alt="Pet products for online retail"
+              src="/images/hero_pet.png"
+              alt="Pet products including toys, treats, and supplies for dogs and cats"
               fill
               priority
               sizes="(max-width: 900px) 100vw, 480px"
@@ -146,10 +149,30 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Shop</span>
+            <h2>Featured products</h2>
+            <p>Popular pet products from the {company.legalName} catalog.</p>
+          </div>
+          <div className="product-grid">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.slug} product={product} />
+            ))}
+          </div>
+          <p style={{ marginTop: '1.5rem' }}>
+            <Link href="/products" className="text-link">
+              View all products →
+            </Link>
+          </p>
+        </div>
+      </section>
+
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Products</span>
+            <span className="eyebrow">Categories</span>
             <h2>Pet product categories</h2>
             <p>Everyday essentials and specialty items for pets and their owners.</p>
           </div>
@@ -161,11 +184,21 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <p style={{ marginTop: '1.5rem' }}>
-            <Link href="/pricing" className="text-link">
-              View all categories
-            </Link>
-          </p>
+        </div>
+      </section>
+
+      <section className="section section-alt">
+        <div className="container">
+          <div className="policy-trust-bar">
+            <h2>Store policies</h2>
+            <p>Transparent policies for shipping, returns, privacy, and terms of service.</p>
+            <div className="policy-links-row">
+              <Link href="/shipping">Shipping Policy</Link>
+              <Link href="/refund-policy">Returns & Refunds</Link>
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/terms">Terms of Service</Link>
+            </div>
+          </div>
         </div>
       </section>
 

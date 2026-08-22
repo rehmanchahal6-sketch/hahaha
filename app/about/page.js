@@ -12,7 +12,7 @@ export default function AboutPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow">About</span>
+          <span className="eyebrow">About Us</span>
           <h1>{company.legalName}</h1>
           <p>
             A {company.entityType} engaged in e-commerce and the online sale of pet products in the
@@ -72,11 +72,10 @@ export default function AboutPage() {
               and reason for the request. We respond within {company.responseTime.toLowerCase()}.
             </p>
             <div className="trust-links">
-              <Link href="/faq">FAQ</Link>
+              <Link href="/products">Products</Link>
+              <Link href="/about">About Us</Link>
               <Link href="/privacy">Privacy Policy</Link>
               <Link href="/terms">Terms of Service</Link>
-              <Link href="/refund-policy">Returns & Refunds</Link>
-              <Link href="/contact">Contact</Link>
             </div>
           </div>
         </div>
